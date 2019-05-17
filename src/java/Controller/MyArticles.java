@@ -37,28 +37,34 @@ public class MyArticles extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        
-        if(session.getAttribute("autoreId")!=null){
-            int autoreId=(int) session.getAttribute("autoreId");
-            
-            Utente autore= AutoriFactory.getInstance().
+
+        if (session.getAttribute("autoreId") != null) {
+            int autoreId = (int) session.getAttribute("autoreId");
+
+            Utente autore = AutoriFactory.getInstance().
                     getUtentebyID(autoreId);
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-            
-            List<Articolo> articoli= ArticoliFactory.getInstance()
+
+            List<Articolo> articoli = ArticoliFactory.getInstance()
                     .getArticoliByAutore(autore);
-            
-            int maxArt= articoli.size()-1;
-            
-            request.setAttribute("maxArt", maxArt);
+            List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
+
+            int maxArt = tuttiArticoli.size() - 1;
+            int maxArtUtente = articoli.size() - 1;
+
+            request.setAttribute("maxArt", maxArtUtente);
             request.setAttribute("autore", autore);
             request.setAttribute("articoli", articoli);
             //carica una jsp
-            request.getRequestDispatcher("articoli.jsp").forward(request, response);
-        }else{ //sennò l'utente non è autenticato
+            if (autore.getTipo().equals("Autore")) {
+                request.getRequestDispatcher("articoli.jsp").forward(request, response);
+            }else{
+                request.getRequestDispatcher("gestioneArticoli.jsp").forward(request, response);
+            }
+        } else { //sennò l'utente non è autenticato
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            
-        }  
+
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

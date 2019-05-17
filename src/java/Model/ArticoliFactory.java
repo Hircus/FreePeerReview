@@ -16,7 +16,6 @@ public class ArticoliFactory {
     private static ArticoliFactory singleton;
 
     private ArticoliFactory() {
-
     }
 
     public static ArticoliFactory getInstance() {

@@ -42,16 +42,16 @@
                         <tr>
                             <th>DATA</th>
                             <th>TITOLO</th>
-                            <th>STATO</th>
-                            <th>OPZIONI</th>
+                            <th>N. VALUTAZIONI</th>
+                            <th>DECISIONE</th>
                         </tr>
 
-                        <c:forEach begin="0" end="${maxArtUtente}" var="i">
+                        <c:forEach begin="0" end="${maxArt}" var="i">
                             <tr class="colore1">
-                                <td>${articoli.get(i).getData().toString()}</td>
-                                <td>${articoli.get(i).getTitolo()}</td>    
-                                <td>Aperto</td>
-                                <td><img class="imgArticle" src="img/pencil.png" title="Modifica" alt="Modifica"> <img class="imgArticle" src="img/trash.png" title="Cancella" alt="Cancella"></td>
+                                <td>${tuttiArticoli.get(i).getData().toString()}</td>
+                                <td>${tuttiArticoli.get(i).getTitolo()}</td>    
+                                <td>WIP</td>
+                                <td>WIP</td>
                             </tr>
                         </c:forEach>
                         
