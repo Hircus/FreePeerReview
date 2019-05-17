@@ -28,42 +28,42 @@
             <!--MAIN
             Main con il form per registrarsi, i dati in ordine sono:
             --> 
-            <main class="col-8" id="register">
-                <h1 class="row">Registrazione</h1>
+            <main class="col-9" id="register">
+                <h1>Registrazione</h1>
                 <form class="register" action="profilo.jsp" method="post">
 
                     <!--Nome-->
-                    <div class="row">
+                    <div>
                         <label for="id_nome">Nome: </label>
                         <input type="text" name="nomeUtente" id="id_nome" value="Antonio"/>
                     </div>
 
                     <!--Cognome-->
-                    <div class="row">
+                    <div>
                         <label for="id_cognome">Cognome: </label>
                         <input type="text" name="cognome" id="id_cognome" value="Cossu"/>
                     </div>
 
                     <!--E-mail-->
-                    <div class="row">
+                    <div>
                         <label for="id_mail">E-mail: </label>
                         <input type="text" name="mail" id="id_mail" value="a.cossu35@studenti.unica.it"/>
                     </div>
 
                     <!--Foto-->
-                    <div class="row">
+                    <div>
                         <label for="id_foto">Foto:</label>
                         <input type="file" name="foto" id="id_foto"/>
                     </div>
 
                     <!--Password-->
-                    <div class="row">
+                    <div>
                         <label for="id_password">Password: </label>
                         <input type="password" name="password" id="id_password" value="corona"/>
                     </div>
 
                     <!--Ente per cui si lavora-->
-                    <div class="row">
+                    <div>
                         <label for="id_ente">Ente: </label>
                         <input type="text" name="ente" id="id_ente" value="Unica"/>
                     </div>

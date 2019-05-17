@@ -28,19 +28,19 @@
             <!--MAIN
             Valutazione di un articolo nel database
             -->
-            <main class="col-8">
+            <main class="col-9">
                 <!--Titolo dell'articolo-->
-                <h1 class="row">La verità su machine learning e deep learning</h1>
+                <h1>La verità su machine learning e deep learning</h1>
 
                 <!--Autori dell'articolo-->
-                <h2 class="row">Autori:</h2>
+                <h2>Autori:</h2>
                 <div>Cossu Antonio</div>
 
                 <!--Immagine descrittiva dell'argomento-->
-                <img class="row" src="img/article.jpeg" title="fotoarticolo" alt="Immagine illustrativa">
+                <img src="img/article.jpeg" title="fotoarticolo" alt="Immagine illustrativa">
 
                 <!--Categorie descrittive dell'articolo in questione-->
-                <h2 class="row">Categorie:</h2>
+                <h2>Categorie:</h2>
                 <div>IA</div>
 
                 <!--Data della scrittura-->
@@ -52,7 +52,7 @@
                 <hr>
 
                 <!--Form per il voto tra 1 stella e 5 stelle-->
-                <h2 class="row" id="voto">Valutazione:</h2>
+                <h2 id="voto">Valutazione:</h2>
                 <div>
                     <select name="voto">
                         <option value="1">1 STELLA</option>

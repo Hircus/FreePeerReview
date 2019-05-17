@@ -28,26 +28,26 @@
             <!--MAIN
             PAgina in cui si possono scrivere articoli pubblici
             -->
-            <main class="col-8">
+            <main class="col-9">
                 <h1>SCRIVI ARTICOLO</h1>
 
                 <!--Form per inserire i dati-->
                 <form class="scriviArticolo">
 
                     <!--Titolo-->
-                    <div class="row">
+                    <div>
                         <label>Titolo:</label>
                         <input type="text" title="titolo" value="Esempio: Come usare i CSS">
                     </div>
 
                     <!--Autori-->
-                    <div class="row">
+                    <div>
                         <label>Autori:</label>
                         <input type="text" title="autori" value="Esempio: Cossu Antonio">
                     </div>
 
                     <!--Categorie a checkbox-->
-                    <div class="row">
+                    <div>
                         <label>Categorie:</label>
                         <div class="check">
                             <input type="checkbox" title="categorie" id="cat1">
@@ -68,7 +68,7 @@
                     </div>
 
                     <!--Immagine-->
-                    <div class="row">
+                    <div>
                         <div>
                             <label>Immagine:</label>
                             <input type="file" title="immagine">
@@ -76,7 +76,7 @@
                     </div>
 
                     <!--Foto profilo-->
-                    <div class="row">
+                    <div>
                         <div>
                             <label>Data:</label>
                             <input type="date">
@@ -84,7 +84,7 @@
                     </div>
 
                     <!--Testo dell'articolo-->
-                    <div class="row">
+                    <div>
                         <div>
                             <label>Testo:</label>
                             <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo"></textarea>
@@ -92,7 +92,7 @@
                     </div>
 
                     <!--Premere per proseguire-->
-                    <div class="row">
+                    <div>
                         <div>
                             <button class="pageButton" type="submit">SALVA ARTICOLO</button>    
                         </div>

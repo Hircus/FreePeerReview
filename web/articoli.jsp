@@ -32,7 +32,7 @@
             <!--MAIN
             Tabella in cui sono presenti gli articoli del database
             -->
-            <main class="col-8">
+            <main class="col-9">
                 <h1>I MIEI ARTICOLI</h1>
 
                 <!--Form con la tabella-->

@@ -12,7 +12,7 @@
         Contiene informazioni varie
         -->
         <footer class="col-12" >
-            <div class="row">Developed by Cossu Antonio</div>
+            <div id="footer">Developed by Cossu Antonio</div>
         </footer>
     </div>
 </html>

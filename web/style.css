@@ -38,7 +38,7 @@ sinistra*/
     .col-12{width: 100%;}
     /**Bordo a sinistra del main per separarlo dalla sidebar**/
     main{
-        border-left: 2px solid azure;
+        /**border-left: 2px solid azure;**/
     }
     /*Style dei submit button nella sidebar*/
     .topButton{
@@ -59,7 +59,7 @@ sinistra*/
     width: 100%;
     content:"";
     clear:both;
-    display:table;
+    display: table;
 }
 /*Style generali delle pagine*/
 body{
@@ -67,10 +67,6 @@ body{
     color: azure;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-}
-div{
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 /*Style dei submit button*/
 button{
@@ -91,17 +87,15 @@ button:hover{
 }
 /*Style di input vari dell'utente'*/
 input[type=text], input[type=password], input[type=date], input[type=file]{
+    color: azure;
+    font-size: 18px;
     border: 2px solid #293241;
     box-sizing: border-box;
     background-color: #293241;
-    color: azure;
-    font-size: 20px;
     width: 50%;
-    float: right;
+    float: right; 
 }
 textarea{
-    color: azure;
-    font-size: 20px;
     background-color: #293241;
     border-color: #293241;
     width: 80%;
@@ -109,6 +103,9 @@ textarea{
 /*Style del bordo che divide l'articolo dal voto in valutazione.html'*/
 hr{
     border: 1px solid azure;
+}
+h1{
+    width: max-content;
 }
 /*Style della tabulazione della pagina articoli.html*/
 table{
@@ -127,19 +124,23 @@ td{
 th{
     background-color: #192a51;
 }
+label{
+    height: max-content;
+    width: max-content;
+}
+div{
+    padding: 10px 0px;
+}
 /*Style dei container principali del sito*/
 header{
     border-bottom: 2px solid azure;
-    height: 100px;
+    clear: both;
 }
 aside{
     clear: both;
     float: left;
     text-align: center;
     margin-top: 30px;
-}
-main{
-    padding-left: 5%;
 }
 footer{
     border-top: 2px solid azure; 
@@ -169,7 +170,7 @@ footer{
 /*Style dei form all'interno delle pagine rispettivamente:
 registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
 .register, .login, .profilo, .articoli, .scriviArticolo{
-    width: 90%;
+    width: 70%;
 }
 /*Style dei submit button nei form di cui sopra*/
 .pageButton{
@@ -190,17 +191,13 @@ registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html
 
 
 /*Style del nome del sito, presente in ogni pagina*/
-#login{
-    border: 0px;
-}
 #title{
     width: 150px;
-    clear: both;
     position: relative;
-    bottom: 75px;
-    left: 100px;
+    bottom: 8px;
     font-size: 30px;
     font-weight: bold;
+    float: right;
 }
 /*Style della textarea in scriviArticolo.html*/
 #testo{
@@ -216,10 +213,15 @@ registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html
 /*Style del clear (spazio al di sotto del logo del sito)*/
 #clear{
     border-bottom: 2px solid azure;
-    margin-top: -14px;
-    margin-bottom: 0px;
 }
 #utente_nav{
     margin-top: 10px;
     font-weight: bold;
 }
+#footer{
+    padding-top: 20px;
+}
+#titolo{
+    width: 250px;
+}
+

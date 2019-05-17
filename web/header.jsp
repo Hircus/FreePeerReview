@@ -6,8 +6,10 @@
         Logo del sito
         -->
         <header class="col-12">
-            <img title="Main Image" alt="imgUnica" src="img/homepage.jpg"> 
-            <div id="title">Free Peer revieW</div>
+            <div id="titolo">
+                <img title="Main Image" alt="imgUnica" src="img/homepage.jpg"> 
+                <div id="title">Free Peer revieW</div>
+            </div>
         </header>
     </div>
 </html>

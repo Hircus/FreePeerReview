@@ -28,42 +28,42 @@
             <!--MAIN
             Main nel quale si possono modificare i dati della registrazione
             -->
-            <main class="col-8" id="profilo">
-                <h1 class="row">Profilo</h1>
+            <main class="col-9" id="profilo">
+                <h1>Profilo</h1>
                 <form class="profilo" action="profilo.jsp" method="post">
-                    <div class="row">
+                    <div>
                         <label for="id_nome">Nome: </label>
                         <input type="text" name="nomeUtente" id="id_nome" value= ${autore.getNome()} />
                     </div>
 
-                    <div class="row">
+                    <div>
                         <label for="id_cognome">Cognome: </label>
                         <input type="text" name="cognome" id="id_cognome" value= ${autore.getCognome()} />
                     </div>
 
-                    <div class="row">
+                    <div>
                         <label for="id_mail">E-mail: </label>
                         <input type="text" name="mail" id="id_mail" value= ${autore.getEmail()} />
                     </div>
 
-                    <div class="row">
+                    <div>
                         <label for="id_foto">Foto: </label>
                         <input type="file" name="foto" id="id_foto"/>
                     </div>
 
-                    <div class="row">
+                    <div>
                         <label for="id_password">Password: </label>
                         <input type="password" name="password" id="id_password" value= ${autore.getPassword()} />
                     </div>
 
-                    <div class="row">
+                    <div>
                         <label for="id_ente">Ente: </label>
                         <input type="text" name="ente" id="id_ente" value="Unica"/>
                     </div>
                     <button type="submit" class="pageButton">SALVA</button>
                 </form>
 
-                <div class="row">
+                <div>
                     <form action="index.html" method="post">
                         <label>Non sei più interessato?</label>
                         <br/>

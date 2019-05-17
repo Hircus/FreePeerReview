@@ -30,13 +30,13 @@
             <main class="col-12" id="index">
                 <h1 id="benv">BENVENUTO!</h1>
 
-                <div class="row">Hai già un account?
+                <div>Hai già un account?
                     <form action="login.jsp" method="post">
                         <button class="pageButton" type="submit">ACCEDI</button>
                     </form>
                 </div>
 
-                <div class="row">Oppure vuoi registrarti?
+                <div>Oppure vuoi registrarti?
                     <form action="registrazione.jsp" method="post">
                         <button class="pageButton" type="submit">REGISTRAMI</button>
                     </form>

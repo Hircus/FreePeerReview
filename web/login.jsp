@@ -20,17 +20,20 @@
         <jsp:include page="header.jsp"/>
 
         <div class="row">
+
+
+            <aside class="col-3"></aside>
             <!--MAIN
             Form per fare il login al sito, con e-mail e password
             -->
             <main class="col-8" id="login">
-                <h1 class="row">Login</h1>
+                <h1>Login</h1>
                 <form class="login" action="login.html" method="post">
-                    <div class="row">
+                    <div>
                         <label for="mail">Email</label>
                         <input type="text" name="email" id="mail"/>
                     </div>
-                    <div class="row">
+                    <div>
                         <label for="id_pass">Password</label>
                         <input type="password" name="password" id="id_pass"/>
                     </div>
