@@ -37,17 +37,6 @@ public class MyArticles extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        if (request.getParameter("articoli") != null) {
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-
-            Utente autore = AutoriFactory.getInstance().
-                    getUtenteEmailPassword(password, email);
-            
-            if (autore != null) {
-                session.setAttribute("autoreId", autore.getId());
-            }
-        }
         
         if(session.getAttribute("autoreId")!=null){
             int autoreId=(int) session.getAttribute("autoreId");
@@ -67,7 +56,7 @@ public class MyArticles extends HttpServlet {
             //carica una jsp
             request.getRequestDispatcher("articoli.jsp").forward(request, response);
         }else{ //sennò l'utente non è autenticato
-            request.getRequestDispatcher("profilo.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             
         }  
     }

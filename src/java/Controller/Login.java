@@ -66,9 +66,7 @@ public class Login extends HttpServlet {
             
             request.setAttribute("articoli", articoli);
             //carica una jsp
-            request.getRequestDispatcher("profilo.jsp").forward(request, response);
-            request.getRequestDispatcher("valutazione.jsp").forward(request, response);
-            request.getRequestDispatcher("articoli.jsp").forward(request, response);
+            request.getRequestDispatcher("articoli.html").forward(request, response);
         }else{ //sennò l'utente non è autenticato
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }      

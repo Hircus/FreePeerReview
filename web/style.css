@@ -137,6 +137,7 @@ div{
 }
 /*Style dei container principali del sito*/
 main{
+    height: available;
 }
 header{
     border-bottom: 2px solid azure;

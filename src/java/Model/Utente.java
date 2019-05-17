@@ -16,7 +16,21 @@ public class Utente {
     private String cognome;
     private String email;
     private String password;
-    private int Tipo;
+    private String tipo;
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     /**
      * @return the password

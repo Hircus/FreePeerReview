@@ -36,6 +36,7 @@ public class AutoriFactory {
         Gregorio.setCognome("Rivano");
         Gregorio.setEmail("gregorio@gmail.com");
         Gregorio.setPassword("sushi");
+        Gregorio.setTipo("Autore");
         autori.add(Gregorio);
         
         Utente Davide= new Utente();
@@ -45,6 +46,7 @@ public class AutoriFactory {
         Davide.setCognome("Piras");
         Davide.setEmail("davide@gmail.com");
         Davide.setPassword("costata");
+        Davide.setTipo("Organizzatore");
         autori.add(Davide);
         
         Utente Marco= new Utente();
@@ -54,6 +56,7 @@ public class AutoriFactory {
         Marco.setCognome("Tomasi");
         Marco.setEmail("marco@gmail.com");
         Marco.setPassword("computer");
+        Marco.setTipo("Autore");
         autori.add(Marco);
         
         return autori;
