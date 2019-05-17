@@ -48,8 +48,8 @@
 
                         <c:forEach begin="0" end="${maxArt}" var="i">
                             <tr class="colore1">
-                                <td>${tuttiArticoli.get(i).getData().toString()}</td>
-                                <td>${tuttiArticoli.get(i).getTitolo()}</td>    
+                                <td>${all.get(i).getData().toString()}</td>
+                                <td>${all.get(i).getTitolo()}</td>    
                                 <td>WIP</td>
                                 <td>WIP</td>
                             </tr>
