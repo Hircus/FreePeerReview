@@ -5,8 +5,6 @@
  */
 package Controller;
 
-import Model.*;
-import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author antonio
  */
-@WebServlet(name = "Articoli", urlPatterns = {"/articoli.html"})
-public class MyArticles extends HttpServlet {
+@WebServlet(name = "Manage", urlPatterns = {"/gestione.html"})
+public class Manage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +32,17 @@ public class MyArticles extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        HttpSession session = request.getSession();
-
-        if (session.getAttribute("autoreId") != null) {
-            int autoreId = (int) session.getAttribute("autoreId");
-
-            Utente autore = AutoriFactory.getInstance().
-                    getUtentebyID(autoreId);
-            //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-
-            List<Articolo> articoli = ArticoliFactory.getInstance()
-                    .getArticoliByAutore(autore);
-            List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
-
-            int maxArt = tuttiArticoli.size()-1;
-            int maxArtUtente = articoli.size()-1;
-
-            request.setAttribute("maxArt", maxArt);
-            request.setAttribute("maxArtUtente", maxArtUtente);
-            request.setAttribute("autore", autore);
-            request.setAttribute("articoli", articoli);
-            request.setAttribute("all", tuttiArticoli);
-            //carica una jsp
-            if (autore.getTipo().equals("Autore")) {
-                request.getRequestDispatcher("articoli.jsp").forward(request, response);
-            }else{
-                request.getRequestDispatcher("gestioneArticoli.jsp").forward(request, response);
-            }
-        } else { //sennò l'utente non è autenticato
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Manage</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Manage at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

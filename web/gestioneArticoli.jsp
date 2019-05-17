@@ -27,7 +27,7 @@
         <div class="row">
 
             <!-- Include nav here -->
-            <jsp:include page="nav.jsp"/>
+            
 
             <!--MAIN
             Tabella in cui sono presenti gli articoli del database
