@@ -24,7 +24,8 @@
         <div class="row">
 
             <jsp:include page="nav.jsp"/>
-
+            
+            
             <!--MAIN
             Main nel quale si possono modificare i dati della registrazione
             -->

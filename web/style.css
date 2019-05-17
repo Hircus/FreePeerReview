@@ -4,6 +4,11 @@ sinistra*/
 [class*="col-"]{
     float: left;
 }
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 /*Media Queries*/
 @media only screen and (max-width: 768px){
     /**Larghezza massima a tutte le colonne per schermi piccoli**/
@@ -37,9 +42,6 @@ sinistra*/
     .col-11{width: 91.66%;}
     .col-12{width: 100%;}
     /**Bordo a sinistra del main per separarlo dalla sidebar**/
-    main{
-        /**border-left: 2px solid azure;**/
-    }
     /*Style dei submit button nella sidebar*/
     .topButton{
         width: 70%;
@@ -47,10 +49,13 @@ sinistra*/
     .topButton:hover{
         width: 90%;
     }
-
     .logout:hover{
         width: 50%;
         transition: 1s;
+    }
+    main{
+        border-left: 2px solid azure;
+        padding-left: 5%;
     }
 }
 
@@ -125,22 +130,22 @@ th{
     background-color: #192a51;
 }
 label{
-    height: max-content;
     width: max-content;
 }
 div{
     padding: 10px 0px;
 }
 /*Style dei container principali del sito*/
+main{
+}
 header{
     border-bottom: 2px solid azure;
     clear: both;
 }
 aside{
     clear: both;
-    float: left;
     text-align: center;
-    margin-top: 30px;
+    padding-top: 30px ;
 }
 footer{
     border-top: 2px solid azure; 
