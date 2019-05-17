@@ -49,12 +49,14 @@ public class MyArticles extends HttpServlet {
                     .getArticoliByAutore(autore);
             List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
 
-            int maxArt = tuttiArticoli.size() - 1;
-            int maxArtUtente = articoli.size() - 1;
+            int maxArt = tuttiArticoli.size()-1;
+            int maxArtUtente = articoli.size()-1;
 
-            request.setAttribute("maxArt", maxArtUtente);
+            request.setAttribute("maxArt", maxArt);
+            request.setAttribute("maxArtUtente", maxArtUtente);
             request.setAttribute("autore", autore);
             request.setAttribute("articoli", articoli);
+            request.setAttribute("all", tuttiArticoli);
             //carica una jsp
             if (autore.getTipo().equals("Autore")) {
                 request.getRequestDispatcher("articoli.jsp").forward(request, response);
