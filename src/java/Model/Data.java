@@ -68,7 +68,7 @@ public class Data {
         Integer g=(Integer)giorno;
         Integer m=(Integer)mese;
         Integer a=(Integer)anno;
-        return g.toString()+"/"+m.toString()+"/"+a.toString();        
+        return g.toString()+"-"+m.toString()+"-"+a.toString();        
     }
     
     

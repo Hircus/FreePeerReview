@@ -133,6 +133,7 @@ label{
     width: max-content;
 }
 div{
+    height: 50%;
     padding: 10px 0px;
 }
 /*Style dei container principali del sito*/
@@ -188,7 +189,7 @@ registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html
     width: 25px;
 }
 /*Style degli input checkbox in scriviArticolo.html*/
-.check{
+.check, .autori{
     float: right;
     clear: both;
 }

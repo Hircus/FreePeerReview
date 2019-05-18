@@ -52,11 +52,11 @@ public class MyPapers extends HttpServlet {
             int maxArt = tuttiArticoli.size()-1;
             int maxArtUtente = articoli.size()-1;
 
-            request.setAttribute("maxArt", maxArt);
-            request.setAttribute("maxArtUtente", maxArtUtente);
-            request.setAttribute("autore", autore);
-            request.setAttribute("articoli", articoli);
-            request.setAttribute("all", tuttiArticoli);
+            session.setAttribute("maxArt", maxArt);
+            session.setAttribute("maxArtUtente", maxArtUtente);
+            session.setAttribute("autore", autore);
+            session.setAttribute("articoli", articoli);
+            session.setAttribute("all", tuttiArticoli);
             //carica una jsp
             if (autore.getTipo().equals("Autore")) {
                 request.getRequestDispatcher("articoli.jsp").forward(request, response);

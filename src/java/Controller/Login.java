@@ -69,6 +69,8 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("articoli.html").forward(request, response);
         }else{ //sennò l'utente non è autenticato
             request.getRequestDispatcher("login.jsp").forward(request, response);
+            
+            request.getRequestDispatcher("nav.jsp").forward(request, response);
         }      
     }
 

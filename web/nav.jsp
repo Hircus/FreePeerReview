@@ -15,8 +15,12 @@
         
         <h2>I tuoi articoli:</h2>
         <ul class="nav">
-            <c:forEach begin="0" end="1" var="i">
-                <div>${articoli.get(i).getTitolo()}</div>
+            <c:forEach begin="0" end="${maxArtUtente}" var="i">
+                <li>
+                    <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
+                        ${articoli.get(i).getTitolo()}
+                    </a>
+                </li>
             </c:forEach>
         </ul>
     </aside>

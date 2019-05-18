@@ -37,58 +37,49 @@
                     <!--Titolo-->
                     <div>
                         <label>Titolo:</label>
-                        <input type="text" title="titolo" value="Esempio: Come usare i CSS">
+                        <input type="text" title="titolo" value="${articolo.getTitolo()}">
                     </div>
 
                     <!--Autori-->
-                    <div>
+                    <div class="row">
                         <label>Autori:</label>
-                        <input type="text" title="autori" value="Esempio: Cossu Antonio">
+                        <c:forEach begin="0" end="${articolo.getAutori().size()-1}" var="i">
+                            <input class="autori" type="text" title="autori" 
+                                   value="${articolo.getAutori().get(i).getNome()} ${articolo.getAutori().get(i).getCognome()}">
+                        </c:forEach>
                     </div>
 
                     <!--Categorie a checkbox-->
-                    <div>
+                    <div class="row">
                         <label>Categorie:</label>
                         <div class="check">
-                            <input type="checkbox" title="categorie" id="cat1">
-                            <label for="cat1">IA</label>
-                            <input type="checkbox" title="categorie" id="cat2">
-                            <label for="cat2">WEB</label>
-                            <input type="checkbox" title="categorie" id="cat3">
-                            <label for="cat3">Java</label>
+                            <input type="checkbox" title="categorie" name="cat" value="ia"/>IA
+                            <input type="checkbox" title="categorie" name="cat" value="web"/>WEB
+                            <input type="checkbox" title="categorie" name="cat" value="java"/>Java
                         </div>
                         <div class="check">
-                            <input type="checkbox" title="categorie" id="cat4">
-                            <label for="cat4">Python</label>
-                            <input type="checkbox" title="categorie" id="cat5">
-                            <label for="cat5">OOP</label>
-                            <input type="checkbox" title="categorie" id="cat6">
-                            <label for="cat6">Calcolatori</label>
+                            <input type="checkbox" title="categorie" name="cat" value="python"/>Python
+                            <input type="checkbox" title="categorie" name="cat" value="oop"/>OOP
+                            <input type="checkbox" title="categorie" name="cat" value="reti"/>Reti
                         </div>
                     </div>
 
                     <!--Immagine-->
                     <div>
-                        <div>
-                            <label>Immagine:</label>
-                            <input type="file" title="immagine">
-                        </div>
+                        <label>Immagine:</label>
+                        <input type="text" title="immagine">
                     </div>
 
-                    <!--Foto profilo-->
+                    <!--Data-->
                     <div>
-                        <div>
-                            <label>Data:</label>
-                            <input type="date">
-                        </div>
+                        <label>Data:</label>
+                        <input type="text" value=${articolo.getData().toString()}>
                     </div>
 
                     <!--Testo dell'articolo-->
                     <div>
-                        <div>
-                            <label>Testo:</label>
-                            <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo"></textarea>
-                        </div>
+                        <label>Testo:</label>
+                        <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${articolo.getTesto().toString()}</textarea>
                     </div>
 
                     <!--Premere per proseguire-->

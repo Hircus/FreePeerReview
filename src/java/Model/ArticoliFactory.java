@@ -41,7 +41,7 @@ public class ArticoliFactory {
         articoli.add(art);
 
         Articolo art2 = new Articolo();
-        art2.setId(1);
+        art2.setId(2);
         art2.setTitolo("La tecnologia FTTH");
         art2.setTesto("La fibra è molto veloce");
         art2.setData(15, 02, 2019);
@@ -50,7 +50,7 @@ public class ArticoliFactory {
         articoli.add(art2);
 
         Articolo art3 = new Articolo();
-        art3.setId(2);
+        art3.setId(3);
         Utente davide = AutoriFactory.getInstance().getUtentebyID(2);
         art3.setTitolo("Guida al Responsive Design");
         art3.setTesto("Il css è una merda");
@@ -60,7 +60,7 @@ public class ArticoliFactory {
         articoli.add(art3);
 
         Articolo art4 = new Articolo();
-        art4.setId(2);
+        art4.setId(4);
         art4.setTitolo("L'importanza dell'ingegneria del software");
         art4.setTesto("Ingegneria è difficile");
         art4.setData(05, 12, 2017);

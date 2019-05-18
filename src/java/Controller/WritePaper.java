@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Model.*;
+import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,11 +36,21 @@ public class WritePaper extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        HttpSession session= request.getSession();
+        
         if(request.getParameter("pid")==null){
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         else{
+            int pid= Integer.parseInt(request.getParameter("pid"));
+            int autoreId=(int) session.getAttribute("autoreId");
             
+            Utente autore= (Utente) session.getAttribute("autore");
+            
+            Articolo articolo= ArticoliFactory.getInstance().getArticoloId(pid);
+            request.setAttribute("articolo", articolo);
+            
+            request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
         }
     }
 
