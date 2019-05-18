@@ -67,7 +67,7 @@
                     <!--Immagine-->
                     <div>
                         <label>Immagine:</label>
-                        <input type="text" title="immagine">
+                        <input type="text" title="immagine" value=${articolo.getImmagine()}>
                     </div>
 
                     <!--Data-->

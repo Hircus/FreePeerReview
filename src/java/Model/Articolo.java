@@ -18,62 +18,12 @@ public class Articolo {
     private List<String> categorie;
     private String titolo;
     private String testo;
+    private String immagine;
     private Data data;
     private int valutazione;
 
     public Articolo() {
         this.autori = new ArrayList<>();
-    }
-
-    /**
-     * @param autori the autori to set
-     */
-    public void setAutori(List<Utente> autori) {
-        this.autori = autori;
-    }
-
-    /**
-     * @return the data
-     */
-    public Data getData() {
-        return data;
-    }
-
-    /**
-     * @param g day
-     * @param m month
-     * @param a year
-     */
-    public void setData(int g, int m, int a) {
-        data= new Data(g, m ,a);
-    }
-
-    /**
-     * @return the categorie
-     */
-    public List<String> getCategorie() {
-        return categorie;
-    }
-
-    /**
-     * @param categorie the categorie to set
-     */
-    public void setCategorie(List<String> categorie) {
-        this.categorie = categorie;
-    }
-
-    /**
-     * @return the valutazione
-     */
-    public int getValutazione() {
-        return valutazione;
-    }
-
-    /**
-     * @param valutazione the valutazione to set
-     */
-    public void setValutazione(int valutazione) {
-        this.valutazione = valutazione;
     }
 
     /**
@@ -91,10 +41,31 @@ public class Articolo {
     }
 
     /**
-     * @return the autore
+     * @return the autori
      */
     public List<Utente> getAutori() {
         return autori;
+    }
+
+    /**
+     * @param autori the autori to set
+     */
+    public void setAutori(List<Utente> autori) {
+        this.autori = autori;
+    }
+
+    /**
+     * @return the categorie
+     */
+    public List<String> getCategorie() {
+        return categorie;
+    }
+
+    /**
+     * @param categorie the categorie to set
+     */
+    public void setCategorie(List<String> categorie) {
+        this.categorie = categorie;
     }
 
     /**
@@ -123,5 +94,49 @@ public class Articolo {
      */
     public void setTesto(String testo) {
         this.testo = testo;
+    }
+
+    /**
+     * @return the immagine
+     */
+    public String getImmagine() {
+        return immagine;
+    }
+
+    /**
+     * @param immagine the immagine to set
+     */
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
+    /**
+     * @return the data
+     */
+    public Data getData() {
+        return data;
+    }
+
+    /**
+     * @param g
+     * @param m
+     * @param a
+     */
+    public void setData(int g, int m, int a) {
+        this.data = new Data(g, m ,a);
+    }
+
+    /**
+     * @return the valutazione
+     */
+    public int getValutazione() {
+        return valutazione;
+    }
+
+    /**
+     * @param valutazione the valutazione to set
+     */
+    public void setValutazione(int valutazione) {
+        this.valutazione = valutazione;
     }
 }
