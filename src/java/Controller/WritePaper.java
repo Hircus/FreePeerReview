@@ -34,10 +34,10 @@ public class WritePaper extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        
-        HttpSession session = request.getSession();
-
-        if (session.getAttribute("autoreId") != null) {
+        if(request.getParameter("pid")==null){
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+        else{
             
         }
     }
