@@ -76,6 +76,9 @@ body{
 a:hover{
     color: azure;
 }
+a:visited{
+    color: #05668d;
+}
 /*Style dei submit button*/
 button{
     background-color: teal;
@@ -179,8 +182,11 @@ footer{
 }
 /*Style dei form all'interno delle pagine rispettivamente:
 registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
-.register, .login, .profilo, .articoli, .scriviArticolo{
+.login, .profilo, .articoli, .scriviArticolo{
     width: 70%;
+}
+.register{
+    width: 30%;
 }
 /*Style dei submit button nei form di cui sopra*/
 .pageButton{

@@ -39,6 +39,11 @@
                     </div>
                     <button type="submit" name="login" class="pageButton">ACCEDI</button>
                 </form> 
+                
+                <form action="registrazione.html" method="post" class="register">
+                    <label for="registrati">Non sei registrato?</label>
+                    <button type="submit" name="registrati" id="registrati">Registrati</button>
+                </form>
             </main>
         </div>
 

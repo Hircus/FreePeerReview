@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Profilo</title>
+        <title>${titoloProfilo}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Antonio Cossu">
@@ -24,13 +24,12 @@
         <div class="row">
 
             <jsp:include page="nav.jsp"/>
-            
-            
+
             <!--MAIN
             Main nel quale si possono modificare i dati della registrazione
             -->
             <main class="col-9" id="profilo">
-                <h1>Profilo</h1>
+                <h1>${titoloProfilo}</h1>
                 <form class="profilo" action="profilo.jsp" method="post">
                     <div>
                         <label for="id_nome">Nome: </label>
@@ -49,7 +48,7 @@
 
                     <div>
                         <label for="id_foto">Foto: </label>
-                        <input type="file" name="foto" id="id_foto"/>
+                        <input type="text" name="foto" id="id_foto" value= ${autore.getImmagine()}/>
                     </div>
 
                     <div>
@@ -59,18 +58,20 @@
 
                     <div>
                         <label for="id_ente">Ente: </label>
-                        <input type="text" name="ente" id="id_ente" value="Unica"/>
+                        <input type="text" name="ente" id="id_ente" value=${autore.getEnte()}/>
                     </div>
-                    <button type="submit" class="pageButton">SALVA</button>
+                    <button type="submit" class="pageButton">${button1}</button>
                 </form>
 
-                <div>
-                    <form action="index.html" method="post">
-                        <label>Non sei più interessato?</label>
-                        <br/>
-                        <button type="submit" class="pageButton">Elimina il profilo</button>                    
-                    </form>
-                </div>
+                <c:if test="${sessione.getAttribute(autoreId)!=null}">
+                    <div>
+                        <form action="login.jsp" method="post">
+                            <label>Non sei più interessato?</label>
+                            <br/>
+                            <button type="submit" class="pageButton">${button2}</button>                    
+                        </form>
+                    </div>
+                </c:if>
 
             </main>
         </div>

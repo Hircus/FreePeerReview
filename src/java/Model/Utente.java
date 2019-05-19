@@ -16,6 +16,8 @@ public class Utente {
     private String cognome;
     private String email;
     private String password;
+    private String immagine;
+    private String ente;
     private String tipo;
 
     /**
@@ -44,6 +46,34 @@ public class Utente {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the immagine
+     */
+    public String getImmagine() {
+        return immagine;
+    }
+
+    /**
+     * @param immagine the immagine to set
+     */
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
+    /**
+     * @return the ente
+     */
+    public String getEnte() {
+        return ente;
+    }
+
+    /**
+     * @param ente the ente to set
+     */
+    public void setEnte(String ente) {
+        this.ente = ente;
     }
 
     /**
