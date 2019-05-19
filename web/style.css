@@ -57,6 +57,16 @@ sinistra*/
         border-left: 2px solid azure;
         padding-left: 5%;
     }
+    .login, .register{
+        display: inline;
+    }
+
+    .register{
+        width: 30%;
+        float: right;
+        clear: both;
+        margin-top: 3.5%;
+    }
 }
 
 /*Row Class*/
@@ -139,13 +149,9 @@ label{
     width: max-content;
 }
 div{
-    height: 50%;
     padding: 10px 0px;
 }
 /*Style dei container principali del sito*/
-main{
-    height: available;
-}
 header{
     border-bottom: 2px solid azure;
     clear: both;
@@ -183,10 +189,7 @@ footer{
 /*Style dei form all'interno delle pagine rispettivamente:
 registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
 .login, .profilo, .articoli, .scriviArticolo{
-    width: 70%;
-}
-.register{
-    width: 30%;
+    width: 50%;
 }
 /*Style dei submit button nei form di cui sopra*/
 .pageButton{
@@ -227,6 +230,9 @@ registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html
     padding-left: 0px;
 }
 /*Style del clear (spazio al di sotto del logo del sito)*/
+#registrati{
+    margin-left: 20px;
+}
 #clear{
     border-bottom: 2px solid azure;
 }

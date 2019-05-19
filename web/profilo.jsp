@@ -63,15 +63,13 @@
                     <button type="submit" class="pageButton">${button1}</button>
                 </form>
 
-                <c:if test="${sessione.getAttribute(autoreId)!=null}">
-                    <div>
-                        <form action="login.jsp" method="post">
-                            <label>Non sei più interessato?</label>
-                            <br/>
-                            <button type="submit" class="pageButton">${button2}</button>                    
-                        </form>
-                    </div>
-                </c:if>
+                <div>
+                    <form action="login.jsp" method="post">
+                        <label>Non sei più interessato?</label>
+                        <br/>
+                        <button type="submit" class="pageButton">${button2}</button>                    
+                    </form>
+                </div>
 
             </main>
         </div>
