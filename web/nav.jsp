@@ -7,15 +7,15 @@
     -->
     <aside class="col-3">
 
-        <c:if test="${autore !=null}">
+        <c:if test="${utente !=null}">
             <img title="avatar" src="img/avatar.png" alt="Immagine Utente" height="100px" width="100px"/>
-            <div id="utente_nav">Ciao ${autore.getNome()}!</div>
+            <div id="utente_nav">Ciao ${utente.getNome()}!</div>
 
             <form action="logout.html" method="post" class="logout_nav">
                 <button class="logout" name="logout" type="submit">LOGOUT</button>
             </form>
             
-            <c:set var="tipo" value="${autore.getTipo()}"/>
+            <c:set var="tipo" value="${utente.getTipo()}"/>
             <c:set var="gestore" value="Organizzatore"/>
             <c:if test="${tipo != gestore}">
                 <h2>I tuoi articoli:</h2>

@@ -8,13 +8,9 @@ package Controller;
 import Model.*;
 import java.util.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 /**
  *
@@ -38,10 +34,10 @@ public class MyPapers extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        if (session.getAttribute("autoreId") != null) {
-            int autoreId = (int) session.getAttribute("autoreId");
+        if (session.getAttribute("utenteId") != null) {
+            int utenteId = (int) session.getAttribute("utenteId");
 
-            Utente autore = (Utente) session.getAttribute("autore");
+            Utente utente = (Utente) session.getAttribute("utente");
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
 
             List<Articolo> articoli = (List<Articolo>) session.getAttribute("articoli");
@@ -55,7 +51,7 @@ public class MyPapers extends HttpServlet {
             session.setAttribute("articoli", articoli);
             session.setAttribute("all", tuttiArticoli);
             //carica una jsp
-            if (autore.getTipo().equals("Autore")) {
+            if (utente.getTipo().equals("Autore")) {
                 request.getRequestDispatcher("articoli.jsp").forward(request, response);
             }else{
                 request.getRequestDispatcher("gestioneArticoli.jsp").forward(request, response);

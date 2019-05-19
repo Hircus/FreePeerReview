@@ -7,8 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <c:if test="${autore !=null}">
-        <c:set var="tipo" value="${autore.getTipo()}"/>
+    <c:if test="${utente !=null}">
+        <c:set var="tipo" value="${utente.getTipo()}"/>
         <c:set var="gestore" value="Organizzatore"/>
         <c:choose>
             <c:when test="${tipo != gestore}">

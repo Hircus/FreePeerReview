@@ -52,11 +52,14 @@
                                 <td>${articoli.get(i).getTitolo()}</td>    
                                 <td>Aperto</td>
                                 <td>
-                                    <img class="imgArticle" src="img/pencil.png" 
-                                         title="Modifica" alt="Modifica"> 
-                                    
-                                    <img class="imgArticle" src="img/trash.png" 
+                                    <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
+                                       <img class="imgArticle" src="img/pencil.png" 
+                                         title="Modifica" alt="Modifica">  
+                                    </a>
+                                    <a>
+                                        <img class="imgArticle" src="img/trash.png" 
                                          title="Cancella" alt="Cancella">
+                                    </a>
                                 </td>
                             </tr>
                         </c:forEach>

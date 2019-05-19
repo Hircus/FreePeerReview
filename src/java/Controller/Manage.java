@@ -8,13 +8,9 @@ package Controller;
 import Model.*;
 import java.util.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 /**
  *
@@ -37,12 +33,13 @@ public class Manage extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session= request.getSession();
-        if(session.getAttribute("autoreId")==null){
+        
+        if(session.getAttribute("utenteId")==null){
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
-            Utente utente= (Utente) session.getAttribute("autore");
+            Utente utente= (Utente) session.getAttribute("utente");
             
-            if(utente.getTipo().equals("autore")){
+            if(utente.getTipo().equals("Autore")){
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }else{
                 List<Articolo> all= (List<Articolo>) session.getAttribute("all");

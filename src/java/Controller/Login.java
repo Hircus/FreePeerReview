@@ -4,16 +4,13 @@
  * and open the template in the editor.
  */
 package Controller;
+
+import Model.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import Model.*;
+import javax.servlet.http.*;
 
 /**
  *
@@ -42,28 +39,28 @@ public class Login extends HttpServlet {
             String email= request.getParameter("email");
             String password= request.getParameter("password");
             
-            Utente autore= AutoriFactory.getInstance().
+            Utente utente= AutoriFactory.getInstance().
                     getUtenteEmailPassword(password, email);
             
-            if(autore !=null){
-                session.setAttribute("autoreId", autore.getId());
+            if(utente !=null){
+                session.setAttribute("utenteId", utente.getId());
             }
             
         }
         
         //qui l'utente ha loggato sicuramente e autoreID è inizializzato
         
-        if(session.getAttribute("autoreId")!=null){
-            int autoreId=(int) session.getAttribute("autoreId");
+        if(session.getAttribute("utenteId")!=null){
+            int utenteId=(int) session.getAttribute("autoreId");
             
-            Utente autore= AutoriFactory.getInstance().
-                    getUtentebyID(autoreId);
+            Utente utente= AutoriFactory.getInstance().
+                    getUtentebyID(utenteId);
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
             
             List<Articolo> articoli= ArticoliFactory.getInstance()
-                    .getArticoliByAutore(autore);
+                    .getArticoliByAutore(utente);
             
-            session.setAttribute("autore", autore);
+            session.setAttribute("utente", utente);
             session.setAttribute("articoli", articoli);
             //carica una jsp
             request.getRequestDispatcher("articoli.html").forward(request, response);

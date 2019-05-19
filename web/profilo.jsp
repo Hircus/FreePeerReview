@@ -33,32 +33,32 @@
                 <form class="profilo" action="profilo.jsp" method="post">
                     <div>
                         <label for="id_nome">Nome: </label>
-                        <input type="text" name="nomeUtente" id="id_nome" value= ${autore.getNome()} />
+                        <input type="text" name="nomeUtente" id="id_nome" value= ${utente.getNome()} />
                     </div>
 
                     <div>
                         <label for="id_cognome">Cognome: </label>
-                        <input type="text" name="cognome" id="id_cognome" value= ${autore.getCognome()} />
+                        <input type="text" name="cognome" id="id_cognome" value= ${utente.getCognome()} />
                     </div>
 
                     <div>
                         <label for="id_mail">E-mail: </label>
-                        <input type="text" name="mail" id="id_mail" value= ${autore.getEmail()} />
+                        <input type="text" name="mail" id="id_mail" value= ${utente.getEmail()} />
                     </div>
 
                     <div>
                         <label for="id_foto">Foto: </label>
-                        <input type="text" name="foto" id="id_foto" value= ${autore.getImmagine()}/>
+                        <input type="text" name="foto" id="id_foto" value= ${utente.getImmagine()}/>
                     </div>
 
                     <div>
                         <label for="id_password">Password: </label>
-                        <input type="password" name="password" id="id_password" value= ${autore.getPassword()} />
+                        <input type="password" name="password" id="id_password" value= ${utente.getPassword()} />
                     </div>
 
                     <div>
                         <label for="id_ente">Ente: </label>
-                        <input type="text" name="ente" id="id_ente" value=${autore.getEnte()}/>
+                        <input type="text" name="ente" id="id_ente" value=${utente.getEnte()}/>
                     </div>
                     <button type="submit" class="pageButton">${button1}</button>
                 </form>

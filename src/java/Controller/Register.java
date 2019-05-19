@@ -8,12 +8,9 @@ package Controller;
 import Model.*;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  *
@@ -40,11 +37,11 @@ public class Register extends HttpServlet {
         String button1;
         String button2;
 
-        if (session.getAttribute("autoreId") != null) {
+        if (session.getAttribute("utenteId") != null) {
             titoloProfilo = "Profilo";
             button1 = "Salva";
             button2 = "Elimina Profilo";
-            Utente autore = (Utente) session.getAttribute("autore");
+            Utente utente = (Utente) session.getAttribute("utente");
 
         } else {
             titoloProfilo = "Registrazione";
