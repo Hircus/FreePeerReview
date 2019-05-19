@@ -51,7 +51,13 @@
                                 <td>${articoli.get(i).getData().toString()}</td>
                                 <td>${articoli.get(i).getTitolo()}</td>    
                                 <td>Aperto</td>
-                                <td><img class="imgArticle" src="img/pencil.png" title="Modifica" alt="Modifica"> <img class="imgArticle" src="img/trash.png" title="Cancella" alt="Cancella"></td>
+                                <td>
+                                    <img class="imgArticle" src="img/pencil.png" 
+                                         title="Modifica" alt="Modifica"> 
+                                    
+                                    <img class="imgArticle" src="img/trash.png" 
+                                         title="Cancella" alt="Cancella">
+                                </td>
                             </tr>
                         </c:forEach>
                         
