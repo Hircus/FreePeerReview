@@ -14,17 +14,21 @@
             <form action="logout.html" method="post" class="logout_nav">
                 <button class="logout" name="logout" type="submit">LOGOUT</button>
             </form>
-
-            <h2>I tuoi articoli:</h2>
-            <ul class="nav">
-                <c:forEach begin="0" end="${maxArtUtente}" var="i">
-                    <li>
-                        <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
-                            ${articoli.get(i).getTitolo()}
-                        </a>
-                    </li>
-                </c:forEach>
-            </ul>
+            
+            <c:set var="tipo" value="${autore.getTipo()}"/>
+            <c:set var="gestore" value="Organizzatore"/>
+            <c:if test="${tipo != gestore}">
+                <h2>I tuoi articoli:</h2>
+                <ul class="nav">
+                    <c:forEach begin="0" end="${maxArtUtente}" var="i">
+                        <li>
+                            <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
+                                ${articoli.get(i).getTitolo()}
+                            </a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </c:if>
         </c:if>
 
     </aside>

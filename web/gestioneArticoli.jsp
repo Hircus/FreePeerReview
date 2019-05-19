@@ -27,16 +27,16 @@
         <div class="row">
 
             <!-- Include nav here -->
-            
+            <jsp:include page="nav.jsp"/>
 
             <!--MAIN
             Tabella in cui sono presenti gli articoli del database
             -->
             <main class="col-9">
-                <h1>I MIEI ARTICOLI</h1>
+                <h1>Articoli del sito</h1>
 
                 <!--Form con la tabella-->
-                <form class="articoli" action="scriviArticolo.jsp" method="post">
+                <form class="articoli" action="logout.html" method="post">
                     <table>
                         <!--Prima riga-->
                         <tr>
@@ -58,7 +58,7 @@
                     </table>
 
                     <!--Submit per scrivere un nuovo articolo-->
-                    <button type="submit" class="pageButton">SCRIVI UN ARTICOLO</button>
+                    <button type="submit" name="logout" class="pageButton">ESCI</button>
                 </form>
             </main>
         </div>

@@ -59,9 +59,10 @@ public class ArticoliFactory {
         art3.setImmagine("immagine3.png");
         art3.setData(17, 04, 2018);
         art3.setValutazione(3);
-        art3.getAutori().add(davide);
+        art3.getAutori().add(gregorio);
         articoli.add(art3);
 
+        Utente marco = AutoriFactory.getInstance().getUtentebyID(3);
         Articolo art4 = new Articolo();
         art4.setId(4);
         art4.setTitolo("L'importanza dell'ingegneria del software");
@@ -69,10 +70,7 @@ public class ArticoliFactory {
         art4.setImmagine("immagine4.png");
         art4.setData(05, 12, 2017);
         art4.setValutazione(2);
-        art4.getAutori().add(davide);
         articoli.add(art4);
-
-        Utente marco = AutoriFactory.getInstance().getUtentebyID(3);
         art2.getAutori().add(marco);
         art4.getAutori().add(marco);
        
