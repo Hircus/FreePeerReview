@@ -32,12 +32,14 @@ public class ArticoliFactory {
 
         Articolo art = new Articolo();
         art.setId(1);
+        Utente gregorio = AutoriFactory.getInstance().getUtentebyID(1);
+
         art.setTitolo("Deep Learning con Python");
         art.setTesto("Python e' un ottimo linguaggio");
         art.setImmagine("immagine1.png");
         art.setData(05, 04, 2019);
         art.setValutazione(5);
-        Utente gregorio = AutoriFactory.getInstance().getUtentebyID(1);
+        art.getCategorie().get(3).setCheck(true);
         art.getAutori().add(gregorio);
         articoli.add(art);
 
@@ -48,32 +50,34 @@ public class ArticoliFactory {
         art2.setImmagine("immagine2.png");
         art2.setData(15, 02, 2019);
         art2.setValutazione(4);
+        art2.getCategorie().get(5).setCheck(true);
         art2.getAutori().add(gregorio);
         articoli.add(art2);
 
         Articolo art3 = new Articolo();
         art3.setId(3);
-        Utente davide = AutoriFactory.getInstance().getUtentebyID(2);
         art3.setTitolo("Guida al Responsive Design");
         art3.setTesto("Il css e' una merda");
         art3.setImmagine("immagine3.png");
         art3.setData(17, 04, 2018);
         art3.setValutazione(3);
         art3.getAutori().add(gregorio);
+        art3.getCategorie().get(1).setCheck(true);
         articoli.add(art3);
 
         Utente marco = AutoriFactory.getInstance().getUtentebyID(3);
         Articolo art4 = new Articolo();
         art4.setId(4);
-        art4.setTitolo("L'importanza dell'ingegneria del software");
-        art4.setTesto("Ingegneria e' difficile");
+        art4.setTitolo("Il linguaggio Object Oriented");
+        art4.setTesto("Java e' un linguaggio OOP");
         art4.setImmagine("immagine4.png");
         art4.setData(05, 12, 2017);
         art4.setValutazione(2);
+        art4.getCategorie().get(4).setCheck(true);
         articoli.add(art4);
         art2.getAutori().add(marco);
         art4.getAutori().add(marco);
-       
+
         return articoli;
     }
 

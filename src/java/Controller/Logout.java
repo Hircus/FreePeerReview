@@ -29,13 +29,13 @@ public class Logout extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session= request.getSession();
-        
-        if(request.getParameter("logout")!= null){
+
+        HttpSession session = request.getSession();
+
+        if (request.getParameter("logout") != null) {
             session.invalidate();
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
+        } else {
             response.sendRedirect("login.html");
         }
     }

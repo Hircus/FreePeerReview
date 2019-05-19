@@ -10,15 +10,15 @@ package Model;
  * @author antonio
  */
 public class Data {
-    
+
     private int giorno;
     private int mese;
     private int anno;
-    
-    public Data(int g, int m, int a){
-        this.giorno=g;
-        this.mese=m;
-        this.anno=a;
+
+    public Data(int g, int m, int a) {
+        this.giorno = g;
+        this.mese = m;
+        this.anno = a;
     }
 
     /**
@@ -62,14 +62,13 @@ public class Data {
     public void setAnno(int anno) {
         this.anno = anno;
     }
-    
+
     @Override
-    public String toString(){
-        Integer g=(Integer)giorno;
-        Integer m=(Integer)mese;
-        Integer a=(Integer)anno;
-        return g.toString()+"-"+m.toString()+"-"+a.toString();        
+    public String toString() {
+        Integer g = (Integer) giorno;
+        Integer m = (Integer) mese;
+        Integer a = (Integer) anno;
+        return g.toString() + "-" + m.toString() + "-" + a.toString();
     }
-    
-    
+
 }

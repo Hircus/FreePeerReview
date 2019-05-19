@@ -31,20 +31,20 @@ public class Manage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session= request.getSession();
-        
-        if(session.getAttribute("utenteId")==null){
+
+        HttpSession session = request.getSession();
+
+        if (session.getAttribute("utenteId") == null) {
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            Utente utente= (Utente) session.getAttribute("utente");
-            
-            if(utente.getTipo().equals("Autore")){
+        } else {
+            Utente utente = (Utente) session.getAttribute("utente");
+
+            if (utente.getTipo().equals("Autore")) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
-            }else{
-                List<Articolo> all= (List<Articolo>) session.getAttribute("all");
-                int maxArt= (int) session.getAttribute("maxArt");
-                
+            } else {
+                List<Articolo> all = (List<Articolo>) session.getAttribute("all");
+                int maxArt = (int) session.getAttribute("maxArt");
+
                 request.getRequestDispatcher("gestioneArticoli.jsp").forward(request, response);
             }
         }

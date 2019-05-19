@@ -54,7 +54,7 @@
                                 <td>WIP</td>
                             </tr>
                         </c:forEach>
-                        
+
                     </table>
 
                     <!--Submit per scrivere un nuovo articolo-->

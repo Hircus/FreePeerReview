@@ -53,6 +53,14 @@
                     <div class="row">
                         <label>Categorie:</label>
                         <div class="check">
+                            <c:forEach items="${articolo.getCategorie()}" var="cat">
+                                <c:if test="${cat.isCheck()}"><c:set var="check" value="checked"/></c:if>
+                                <c:if test="${!cat.isCheck()}"><c:set var="check" value=""/></c:if>
+                                <input type="checkbox" title="categorie" ${check} name="lang" value="${cat.getNome()}"/>${cat.getNome()}
+                            </c:forEach>
+                        </div>
+                        <!--
+                        <div class="check">
                             <input type="checkbox" title="categorie" name="cat" value="ia"/>IA
                             <input type="checkbox" title="categorie" name="cat" value="web"/>WEB
                             <input type="checkbox" title="categorie" name="cat" value="java"/>Java
@@ -62,6 +70,7 @@
                             <input type="checkbox" title="categorie" name="cat" value="oop"/>OOP
                             <input type="checkbox" title="categorie" name="cat" value="reti"/>Reti
                         </div>
+                        -->
                     </div>
 
                     <!--Immagine-->

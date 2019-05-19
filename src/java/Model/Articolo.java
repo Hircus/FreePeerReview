@@ -15,7 +15,8 @@ public class Articolo {
 
     private int id;
     private List<Utente> autori;
-    private List<String> categorie;
+    private List<Categoria> categorie = CategorieFactory.getInstance()
+            .getCategorie();
     private String titolo;
     private String testo;
     private String immagine;
@@ -57,15 +58,8 @@ public class Articolo {
     /**
      * @return the categorie
      */
-    public List<String> getCategorie() {
+    public List<Categoria> getCategorie() {
         return categorie;
-    }
-
-    /**
-     * @param categorie the categorie to set
-     */
-    public void setCategorie(List<String> categorie) {
-        this.categorie = categorie;
     }
 
     /**
@@ -123,11 +117,11 @@ public class Articolo {
      * @param a
      */
     public void setData(int g, int m, int a) {
-        this.data = new Data(g, m ,a).toString();
+        this.data = new Data(g, m, a).toString();
     }
-    
-    public void setDataByString(String data){
-        this.data= data;
+
+    public void setDataByString(String data) {
+        this.data = data;
     }
 
     /**

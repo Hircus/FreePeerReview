@@ -53,17 +53,17 @@
                                 <td>Aperto</td>
                                 <td>
                                     <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
-                                       <img class="imgArticle" src="img/pencil.png" 
-                                         title="Modifica" alt="Modifica">  
+                                        <img class="imgArticle" src="img/pencil.png" 
+                                             title="Modifica" alt="Modifica">  
                                     </a>
                                     <a>
                                         <img class="imgArticle" src="img/trash.png" 
-                                         title="Cancella" alt="Cancella">
+                                             title="Cancella" alt="Cancella">
                                     </a>
                                 </td>
                             </tr>
                         </c:forEach>
-                        
+
                     </table>
 
                     <!--Submit per scrivere un nuovo articolo-->

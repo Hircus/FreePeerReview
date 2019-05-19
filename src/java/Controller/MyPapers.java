@@ -43,8 +43,8 @@ public class MyPapers extends HttpServlet {
             List<Articolo> articoli = (List<Articolo>) session.getAttribute("articoli");
             List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
 
-            int maxArt = tuttiArticoli.size()-1;
-            int maxArtUtente = articoli.size()-1;
+            int maxArt = tuttiArticoli.size() - 1;
+            int maxArtUtente = articoli.size() - 1;
 
             session.setAttribute("maxArt", maxArt);
             session.setAttribute("maxArtUtente", maxArtUtente);
@@ -53,7 +53,7 @@ public class MyPapers extends HttpServlet {
             //carica una jsp
             if (utente.getTipo().equals("Autore")) {
                 request.getRequestDispatcher("articoli.jsp").forward(request, response);
-            }else{
+            } else {
                 request.getRequestDispatcher("gestioneArticoli.jsp").forward(request, response);
             }
         } else { //sennò l'utente non è autenticato

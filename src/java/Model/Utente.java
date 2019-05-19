@@ -10,7 +10,7 @@ package Model;
  * @author antonio
  */
 public class Utente {
-    
+
     private int id;
     private String nome;
     private String cognome;
@@ -131,9 +131,9 @@ public class Utente {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    public boolean equals(Utente a){
-        return this.id==a.id;
+
+    public boolean equals(Utente a) {
+        return this.id == a.id;
     }
-       
+
 }

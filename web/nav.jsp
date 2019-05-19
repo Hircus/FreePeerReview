@@ -14,7 +14,7 @@
             <form action="logout.html" method="post" class="logout_nav">
                 <button class="logout" name="logout" type="submit">LOGOUT</button>
             </form>
-            
+
             <c:set var="tipo" value="${utente.getTipo()}"/>
             <c:set var="gestore" value="Organizzatore"/>
             <c:if test="${tipo != gestore}">

@@ -31,42 +31,41 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session= request.getSession();
-        
-        if(request.getParameter("login")!=null){
+
+        HttpSession session = request.getSession();
+
+        if (request.getParameter("login") != null) {
             //l'utente ha premuto il tasto login
-            String email= request.getParameter("email");
-            String password= request.getParameter("password");
-            
-            Utente utente= AutoriFactory.getInstance().
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            Utente utente = AutoriFactory.getInstance().
                     getUtenteEmailPassword(password, email);
-            
-            if(utente !=null){
+
+            if (utente != null) {
                 session.setAttribute("utenteId", utente.getId());
             }
-            
+
         }
-        
+
         //qui l'utente ha loggato sicuramente e autoreID è inizializzato
-        
-        if(session.getAttribute("utenteId")!=null){
-            int utenteId=(int) session.getAttribute("utenteId");
-            
-            Utente utente= AutoriFactory.getInstance().
+        if (session.getAttribute("utenteId") != null) {
+            int utenteId = (int) session.getAttribute("utenteId");
+
+            Utente utente = AutoriFactory.getInstance().
                     getUtentebyID(utenteId);
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-            
-            List<Articolo> articoli= ArticoliFactory.getInstance()
+
+            List<Articolo> articoli = ArticoliFactory.getInstance()
                     .getArticoliByAutore(utente);
-            
+
             session.setAttribute("utente", utente);
             session.setAttribute("articoli", articoli);
             //carica una jsp
             request.getRequestDispatcher("articoli.html").forward(request, response);
-        }else{ //sennò l'utente non è autenticato
+        } else { //sennò l'utente non è autenticato
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }      
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
