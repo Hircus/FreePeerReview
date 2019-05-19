@@ -41,12 +41,10 @@ public class MyPapers extends HttpServlet {
         if (session.getAttribute("autoreId") != null) {
             int autoreId = (int) session.getAttribute("autoreId");
 
-            Utente autore = AutoriFactory.getInstance().
-                    getUtentebyID(autoreId);
+            Utente autore = (Utente) session.getAttribute("autore");
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
 
-            List<Articolo> articoli = ArticoliFactory.getInstance()
-                    .getArticoliByAutore(autore);
+            List<Articolo> articoli = (List<Articolo>) session.getAttribute("articoli");
             List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
 
             int maxArt = tuttiArticoli.size()-1;
@@ -54,9 +52,7 @@ public class MyPapers extends HttpServlet {
 
             session.setAttribute("maxArt", maxArt);
             session.setAttribute("maxArtUtente", maxArtUtente);
-            session.setAttribute("autore", autore);
             session.setAttribute("articoli", articoli);
-            session.setAttribute("all", tuttiArticoli);
             //carica una jsp
             if (autore.getTipo().equals("Autore")) {
                 request.getRequestDispatcher("articoli.jsp").forward(request, response);

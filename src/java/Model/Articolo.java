@@ -19,7 +19,7 @@ public class Articolo {
     private String titolo;
     private String testo;
     private String immagine;
-    private Data data;
+    private String data;
     private int valutazione;
 
     public Articolo() {
@@ -113,7 +113,7 @@ public class Articolo {
     /**
      * @return the data
      */
-    public Data getData() {
+    public String getData() {
         return data;
     }
 
@@ -123,7 +123,11 @@ public class Articolo {
      * @param a
      */
     public void setData(int g, int m, int a) {
-        this.data = new Data(g, m ,a);
+        this.data = new Data(g, m ,a).toString();
+    }
+    
+    public void setDataByString(String data){
+        this.data= data;
     }
 
     /**

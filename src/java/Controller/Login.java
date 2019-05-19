@@ -62,15 +62,13 @@ public class Login extends HttpServlet {
             
             List<Articolo> articoli= ArticoliFactory.getInstance()
                     .getArticoliByAutore(autore);
-            request.setAttribute("autore", autore);
             
-            request.setAttribute("articoli", articoli);
+            session.setAttribute("autore", autore);
+            session.setAttribute("articoli", articoli);
             //carica una jsp
             request.getRequestDispatcher("articoli.html").forward(request, response);
         }else{ //sennò l'utente non è autenticato
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            
-            request.getRequestDispatcher("nav.jsp").forward(request, response);
         }      
     }
 

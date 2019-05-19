@@ -32,19 +32,19 @@
                 <h1>SCRIVI ARTICOLO</h1>
 
                 <!--Form per inserire i dati-->
-                <form class="scriviArticolo">
+                <form class="scriviArticolo" method="post" action="scriviArticolo.html?pid=${articoli.get(i).getId()}">
 
                     <!--Titolo-->
                     <div>
                         <label>Titolo:</label>
-                        <input type="text" title="titolo" value="${articolo.getTitolo()}">
+                        <input type="text" title="titolo" name="titolo" value="${articolo.getTitolo()}">
                     </div>
 
                     <!--Autori-->
                     <div class="row">
                         <label>Autori:</label>
                         <c:forEach begin="0" end="${articolo.getAutori().size()-1}" var="i">
-                            <input class="autori" type="text" title="autori" 
+                            <input class="autori" type="text" title="autori" name="autori"
                                    value="${articolo.getAutori().get(i).getNome()} ${articolo.getAutori().get(i).getCognome()}">
                         </c:forEach>
                     </div>
@@ -67,13 +67,13 @@
                     <!--Immagine-->
                     <div>
                         <label>Immagine:</label>
-                        <input type="text" title="immagine" value=${articolo.getImmagine()}>
+                        <input type="text" title="immagine" name="immagine" value=${articolo.getImmagine()}>
                     </div>
 
                     <!--Data-->
                     <div>
                         <label>Data:</label>
-                        <input type="text" value=${articolo.getData().toString()}>
+                        <input type="text" name="data" value=${articolo.getData().toString()}>
                     </div>
 
                     <!--Testo dell'articolo-->
@@ -84,9 +84,7 @@
 
                     <!--Premere per proseguire-->
                     <div>
-                        <div>
-                            <button class="pageButton" type="submit">SALVA ARTICOLO</button>    
-                        </div>
+                        <button class="pageButton" name="salva" type="submit">SALVA ARTICOLO</button>    
                     </div>
                 </form>
             </main>

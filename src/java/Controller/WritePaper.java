@@ -35,21 +35,32 @@ public class WritePaper extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session= request.getSession();
-        
-        if(request.getParameter("pid")==null){
+
+        HttpSession session = request.getSession();
+
+        if (request.getParameter("pid") == null) {
             request.getRequestDispatcher("error.jsp").forward(request, response);
-        }
-        else{
-            int pid= Integer.parseInt(request.getParameter("pid"));
-            int autoreId=(int) session.getAttribute("autoreId");
-            
-            Utente autore= (Utente) session.getAttribute("autore");
-            
-            Articolo articolo= ArticoliFactory.getInstance().getArticoloId(pid);
+        } else {
+            int pid = Integer.parseInt(request.getParameter("pid"));
+
+            Utente autore = (Utente) session.getAttribute("autore");
+
+            Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
             request.setAttribute("articolo", articolo);
-            
+
+            if (request.getParameter("salva") != null) {
+                String titolo = request.getParameter("titolo");
+                String immagine = request.getParameter("immagine");
+                String data = request.getParameter("data");
+                String testo = request.getParameter("testo");
+
+                articolo.setTitolo(titolo);
+                articolo.setImmagine(immagine);
+                //articolo.setTesto(testo); bug che modifica il testo con caratteri strani
+                articolo.setDataByString(data);
+            }
+            request.setAttribute("articolo", articolo);
+
             request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
         }
     }
