@@ -33,7 +33,7 @@ public class ArticoliFactory {
         Articolo art = new Articolo();
         art.setId(1);
         art.setTitolo("Deep Learning con Python");
-        art.setTesto("Python è un ottimo linguaggio");
+        art.setTesto("Python e' un ottimo linguaggio");
         art.setImmagine("immagine1.png");
         art.setData(05, 04, 2019);
         art.setValutazione(5);
@@ -44,7 +44,7 @@ public class ArticoliFactory {
         Articolo art2 = new Articolo();
         art2.setId(2);
         art2.setTitolo("La tecnologia FTTH");
-        art2.setTesto("La fibra è molto veloce");
+        art2.setTesto("La fibra e' molto veloce");
         art2.setImmagine("immagine2.png");
         art2.setData(15, 02, 2019);
         art2.setValutazione(4);
@@ -55,7 +55,7 @@ public class ArticoliFactory {
         art3.setId(3);
         Utente davide = AutoriFactory.getInstance().getUtentebyID(2);
         art3.setTitolo("Guida al Responsive Design");
-        art3.setTesto("Il css è una merda");
+        art3.setTesto("Il css e' una merda");
         art3.setImmagine("immagine3.png");
         art3.setData(17, 04, 2018);
         art3.setValutazione(3);
@@ -66,7 +66,7 @@ public class ArticoliFactory {
         Articolo art4 = new Articolo();
         art4.setId(4);
         art4.setTitolo("L'importanza dell'ingegneria del software");
-        art4.setTesto("Ingegneria è difficile");
+        art4.setTesto("Ingegneria e' difficile");
         art4.setImmagine("immagine4.png");
         art4.setData(05, 12, 2017);
         art4.setValutazione(2);

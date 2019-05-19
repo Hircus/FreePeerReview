@@ -79,7 +79,7 @@
                     <!--Testo dell'articolo-->
                     <div>
                         <label>Testo:</label>
-                        <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${articolo.getTesto().toString()}</textarea>
+                        <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${articolo.getTesto()}</textarea>
                     </div>
 
                     <!--Premere per proseguire-->

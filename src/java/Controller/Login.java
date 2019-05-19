@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
         //qui l'utente ha loggato sicuramente e autoreID è inizializzato
         
         if(session.getAttribute("utenteId")!=null){
-            int utenteId=(int) session.getAttribute("autoreId");
+            int utenteId=(int) session.getAttribute("utenteId");
             
             Utente utente= AutoriFactory.getInstance().
                     getUtentebyID(utenteId);

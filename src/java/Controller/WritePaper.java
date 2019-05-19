@@ -52,7 +52,7 @@ public class WritePaper extends HttpServlet {
 
                 articolo.setTitolo(titolo);
                 articolo.setImmagine(immagine);
-                //articolo.setTesto(testo); bug che modifica il testo con caratteri strani
+                articolo.setTesto(testo); //bug che modifica la e accentata con altri caratteri (trovata soluzione temporanea)
                 articolo.setDataByString(data);
             }
             request.setAttribute("articolo", articolo);
