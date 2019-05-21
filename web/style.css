@@ -26,6 +26,9 @@ sinistra*/
     .logout{
         width: 30%;
     }
+    form{
+        width: 100%;
+    }
 }
 @media only screen and (min-width: 768px){
     /**Larghezza delle colonne variabile per schermi desktop**/
@@ -60,12 +63,16 @@ sinistra*/
     .login, .register{
         display: inline;
     }
-
     .register{
         width: 30%;
         float: right;
         clear: both;
         margin-top: 3.5%;
+    }
+    /*Style dei form all'interno delle pagine rispettivamente:
+    registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
+    .login, .profilo, .articoli, .scriviArticolo{
+        width: 50%;
     }
 }
 
@@ -120,13 +127,12 @@ textarea{
     background-color: #293241;
     border-color: #293241;
     width: 80%;
+    color: azure;
+    font-size: 16px;
 }
 /*Style del bordo che divide l'articolo dal voto in valutazione.html'*/
 hr{
     border: 1px solid azure;
-}
-h1{
-    width: max-content;
 }
 /*Style della tabulazione della pagina articoli.html*/
 table{
@@ -148,7 +154,7 @@ th{
 label{
     width: max-content;
 }
-div{
+form div{
     padding: 10px 0px;
 }
 /*Style dei container principali del sito*/
@@ -175,7 +181,9 @@ footer{
 .link{
     width: 100%;
 }
-
+.prova{
+    background-color: #2a2b2e;
+}
 /*Style del tabulato in articoli.html*/
 .colore1{
     background-color: #037171;
@@ -185,11 +193,6 @@ footer{
 }
 .nav{
     margin-left: -50px;
-}
-/*Style dei form all'interno delle pagine rispettivamente:
-registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
-.login, .profilo, .articoli, .scriviArticolo{
-    width: 50%;
 }
 /*Style dei submit button nei form di cui sopra*/
 .pageButton{
@@ -213,7 +216,6 @@ registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html
 #title{
     width: 150px;
     position: relative;
-    bottom: 8px;
     font-size: 30px;
     font-weight: bold;
     float: right;
@@ -241,7 +243,8 @@ registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html
     font-weight: bold;
 }
 #footer{
-    padding-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 #titolo{
     width: 250px;

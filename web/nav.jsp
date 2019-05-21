@@ -6,7 +6,6 @@
                 Contiene il nav con i link per navigare nelle pagine 
     -->
     <aside class="col-3">
-
         <c:if test="${utente !=null}">
             <img title="avatar" src="img/avatar.png" alt="Immagine Utente" height="100px" width="100px"/>
             <div id="utente_nav">Ciao ${utente.getNome()}!</div>
@@ -30,7 +29,6 @@
                 </ul>
             </c:if>
         </c:if>
-
     </aside>
 
 </html>
