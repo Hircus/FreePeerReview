@@ -10,7 +10,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-            login.jsp
+            login.html
         </welcome-file>
     </welcome-file-list>
 </web-app>
