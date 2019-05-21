@@ -25,6 +25,10 @@ public class Articolo {
 
     public Articolo() {
         this.autori = new ArrayList<>();
+        this.titolo= "";
+        this.testo= "";
+        this.immagine= "";
+        this.data= "";
     }
 
     /**
