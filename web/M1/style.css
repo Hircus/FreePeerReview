@@ -1,0 +1,252 @@
+/**LAYOUT RIGHE E COLONNE**/
+/*Ad ogni elemento con classe colonna viene applicato lo "slittamento" a
+sinistra*/
+[class*="col-"]{
+    float: left;
+}
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*Media Queries*/
+@media only screen and (max-width: 768px){
+    /**Larghezza massima a tutte le colonne per schermi piccoli**/
+    [class*="col-"]{
+        width: 100%;
+    }
+    /*Style dei submit button nella sidebar*/
+    .corona{
+        float: left;
+        width: 20%;
+    }
+    .topButton{
+        width: 90%;
+    }
+    .logout{
+        width: 30%;
+    }
+    form{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 768px){
+    /**Larghezza delle colonne variabile per schermi desktop**/
+    .col-1{width: 8.33%;}
+    .col-2{width: 16.66%;}
+    .col-3{width: 25%;}
+    .col-4{width: 33.33%;}
+    .col-5{width: 41.66%;}
+    .col-6{width: 50%;}
+    .col-7{width: 58.33%;}
+    .col-8{width: 66.66%;}
+    .col-9{width: 75%;}
+    .col-10{width: 83.33%;}
+    .col-11{width: 91.66%;}
+    .col-12{width: 100%;}
+    /**Bordo a sinistra del main per separarlo dalla sidebar**/
+    /*Style dei submit button nella sidebar*/
+    .topButton{
+        width: 70%;
+    }
+    .topButton:hover{
+        width: 90%;
+    }
+    .logout:hover{
+        width: 50%;
+        transition: 1s;
+    }
+    main{
+        border-left: 2px solid azure;
+        padding-left: 5%;
+    }
+    .login, .register{
+        display: inline;
+    }
+    .register{
+        width: 30%;
+        float: right;
+        clear: both;
+        margin-top: 3.5%;
+    }
+    /*Style dei form all'interno delle pagine rispettivamente:
+    registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
+    .login, .profilo, .articoli, .scriviArticolo{
+        width: 50%;
+    }
+}
+
+/*Row Class*/
+.row::after{
+    width: 100%;
+    content:"";
+    clear:both;
+    display: table;
+}
+/*Style generali delle pagine*/
+body{
+    background-color: #1E2227;
+    color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+a:hover{
+    color: azure;
+}
+a:visited{
+    color: #05668d;
+}
+/*Style dei submit button*/
+button{
+    background-color: teal;
+    border: none;
+    border-radius: 30px;
+    padding: 20px 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    cursor: pointer;
+    font-weight: bold;
+    color: azure;
+    opacity: 0.8;
+}
+button:hover{
+    opacity: 0.5;
+    transition: 0.40s;
+}
+/*Style di input vari dell'utente'*/
+input[type=text], input[type=password], input[type=date], input[type=file]{
+    color: azure;
+    font-size: 18px;
+    border: 2px solid #293241;
+    box-sizing: border-box;
+    background-color: #293241;
+    width: 50%;
+    float: right; 
+}
+textarea{
+    background-color: #293241;
+    border-color: #293241;
+    width: 80%;
+    color: azure;
+    font-size: 16px;
+}
+/*Style del bordo che divide l'articolo dal voto in valutazione.html'*/
+hr{
+    border: 1px solid azure;
+}
+/*Style della tabulazione della pagina articoli.html*/
+table{
+    border-collapse:collapse;
+    width: 100%;
+}
+td, th{
+    border: 2px solid #05668d;
+    padding: 10px;
+    text-align: center;
+}
+td{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+th{
+    background-color: #192a51;
+}
+label{
+    width: max-content;
+}
+form div{
+    padding: 10px 0px;
+}
+/*Style dei container principali del sito*/
+header{
+    border-bottom: 2px solid azure;
+    clear: both;
+}
+aside{
+    clear: both;
+    text-align: center;
+    padding-top: 30px ;
+}
+footer{
+    border-top: 2px solid azure; 
+    border-bottom: 2px solid azure;
+}
+
+
+/**CLASSI**/
+.topform{
+    float: left;
+    width: 33%;
+}
+.link{
+    width: 100%;
+}
+.prova{
+    background-color: #2a2b2e;
+}
+/*Style del tabulato in articoli.html*/
+.colore1{
+    background-color: #037171;
+}
+.colore2{
+    background-color: #009f93;
+}
+.nav{
+    margin-left: -50px;
+}
+/*Style dei submit button nei form di cui sopra*/
+.pageButton{
+    width: 250px;
+}
+/*Style delle immagini in articoli.html*/
+.imgArticle{
+    height: 25px;
+    width: 25px;
+}
+/*Style degli input checkbox in scriviArticolo.html*/
+.check, .autori{
+    float: right;
+    clear: both;
+}
+
+/**ID**/
+
+
+/*Style del nome del sito, presente in ogni pagina*/
+#title{
+    width: 150px;
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    float: right;
+}
+/*Style della textarea in scriviArticolo.html*/
+#testo{
+    float: right;
+}
+/*Style del main della pagina index.html*/
+#index{
+    border-left-width: 0px;
+    text-align: center;
+    line-height: 2;
+    padding-left: 0px;
+}
+/*Style del clear (spazio al di sotto del logo del sito)*/
+#registrati{
+    margin-left: 20px;
+}
+#clear{
+    border-bottom: 2px solid azure;
+}
+#utente_nav{
+    margin-top: 10px;
+    font-weight: bold;
+}
+#footer{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#titolo{
+    width: 250px;
+}
+
