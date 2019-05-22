@@ -20,7 +20,7 @@
         <jsp:include page="header.jsp"/>
 
         <jsp:include page="clear.jsp"/>
-
+        
         <div class="row">
 
             <jsp:include page="nav.jsp"/>
