@@ -31,6 +31,8 @@ public class AutoriFactory {
         List<Utente> autori = new ArrayList<>();
 
         Utente Gregorio = new Utente();
+        Utente Davide = new Utente();
+        Utente Marco = new Utente();
 
         Gregorio.setId(1);
         Gregorio.setNome("Gregorio");
@@ -42,8 +44,6 @@ public class AutoriFactory {
         Gregorio.setTipo("Autore");
         autori.add(Gregorio);
 
-        Utente Davide = new Utente();
-
         Davide.setId(2);
         Davide.setNome("Davide");
         Davide.setCognome("Piras");
@@ -53,8 +53,6 @@ public class AutoriFactory {
         Davide.setTipo("Organizzatore");
         Davide.setEnte("Uniss");
         autori.add(Davide);
-
-        Utente Marco = new Utente();
 
         Marco.setId(3);
         Marco.setNome("Marco");

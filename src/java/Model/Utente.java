@@ -20,6 +20,9 @@ public class Utente {
     private String ente;
     private String tipo;
 
+    public Utente(){
+    }
+    
     /**
      * @return the tipo
      */

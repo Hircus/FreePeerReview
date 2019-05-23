@@ -7,17 +7,17 @@ package Controller;
 
 import Model.*;
 import java.io.IOException;
-import java.util.*;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author antonio
+ * @author tobias
  */
-//@WebServlet(name = "Login", urlPatterns = {"/login.html"})
-public class Login extends HttpServlet {
+public class RatePaper extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,43 +31,25 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        HttpSession session = request.getSession();
-
-        if (request.getParameter("login") != null) {
-            //l'utente ha premuto il tasto login
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-
-            Utente utente = AutoriFactory.getInstance().
-                    getUtenteEmailPassword(password, email);
-
-            if (utente != null) {
-                session.setAttribute("utenteId", utente.getId());
-            }
-
-        }
-
-        //qui l'utente ha loggato sicuramente e autoreID è inizializzato
-        if (session.getAttribute("utenteId") != null) {
-            int utenteId = (int) session.getAttribute("utenteId");
-
-            Utente utente = AutoriFactory.getInstance().
-                    getUtentebyID(utenteId);
+        HttpSession session= request.getSession();
+        
+        if(session.getAttribute("utenteId")!=null){
             
-            if (utente.getTipo().equals("Organizzatore")) {
-                request.getRequestDispatcher("M1/gestioneArticoli.jsp").forward(request, response);
+            Utente utente= (Utente) session.getAttribute("utente");
+            
+            if(utente.getTipo().equals("Organizzatore")){
+                request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
-            //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-
-            List<Articolo> articoli = ArticoliFactory.getInstance()
-                    .getArticoliByAutore(utente);
-
-            session.setAttribute("utente", utente);
-            session.setAttribute("articoli", articoli);
-            //carica una jsp
-            request.getRequestDispatcher("articoli.html").forward(request, response);
-        } else { //sennò l'utente non è autenticato
+            Articolo art= ArticoliFactory.getInstance().getArticoliByAutore(utente).get(1);
+            int maxAut= art.getAutori().size()-1;
+            Valutazione val= art.getValutazione();
+            
+            request.setAttribute("val", val);
+            request.setAttribute("art", art);
+            request.setAttribute("maxAut", maxAut);
+            
+            request.getRequestDispatcher("M1/valutazione.jsp").forward(request, response);
+        }else{
             request.getRequestDispatcher("M1/login.jsp").forward(request, response);
         }
     }

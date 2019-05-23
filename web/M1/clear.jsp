@@ -17,7 +17,7 @@
                         <form action="registrazione.html" method="post" class="topform">
                             <button class="topButton" type="submit">PROFILO</button>
                         </form>
-                        <form action="M1/valutazione.jsp" method="post" class="topform">
+                        <form action="valutazione.html" method="post" class="topform">
                             <button class="topButton" type="submit">VALUTAZIONE</button>
                         </form>
                         <form action="articoli.html" method="post" class="topform">

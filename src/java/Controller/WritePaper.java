@@ -39,7 +39,11 @@ public class WritePaper extends HttpServlet {
             int pid = Integer.parseInt(request.getParameter("pid"));
 
             Utente utente = (Utente) session.getAttribute("utente");
-
+            
+            if (utente.getTipo().equals("Organizzatore")) {
+                request.getRequestDispatcher("M1/error.jsp").forward(request, response);
+            }
+            
             Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
             request.setAttribute("articolo", articolo);
 

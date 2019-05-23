@@ -29,50 +29,51 @@ public class ArticoliFactory {
     public List<Articolo> getArticoli() {
 
         List<Articolo> articoli = new ArrayList<>();
-
-        Articolo art = new Articolo();
-        art.setId(1);
+        
         Utente gregorio = AutoriFactory.getInstance().getUtentebyID(1);
-
+        Utente marco = AutoriFactory.getInstance().getUtentebyID(3);
+        
+        Articolo art = new Articolo();
+        Articolo art2 = new Articolo();
+        Articolo art3 = new Articolo();
+        Articolo art4 = new Articolo();
+        
+        art.setId(1);
         art.setTitolo("Deep Learning con Python");
         art.setTesto("Python e' un ottimo linguaggio");
         art.setImmagine("immagine1.png");
         art.setData(05, 04, 2019);
-        art.setValutazione(5);
+        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(1));
         art.getCategorie().get(3).setCheck(true);
         art.getAutori().add(gregorio);
         articoli.add(art);
 
-        Articolo art2 = new Articolo();
         art2.setId(2);
         art2.setTitolo("La tecnologia FTTH");
         art2.setTesto("La fibra e' molto veloce");
         art2.setImmagine("immagine2.png");
         art2.setData(15, 02, 2019);
-        art2.setValutazione(4);
+        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(2));
         art2.getCategorie().get(5).setCheck(true);
         art2.getAutori().add(gregorio);
         articoli.add(art2);
 
-        Articolo art3 = new Articolo();
         art3.setId(3);
         art3.setTitolo("Guida al Responsive Design");
         art3.setTesto("Il css e' una merda");
         art3.setImmagine("immagine3.png");
         art3.setData(17, 04, 2018);
-        art3.setValutazione(3);
+        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(3));
         art3.getAutori().add(gregorio);
         art3.getCategorie().get(1).setCheck(true);
         articoli.add(art3);
-
-        Utente marco = AutoriFactory.getInstance().getUtentebyID(3);
-        Articolo art4 = new Articolo();
+        
         art4.setId(4);
         art4.setTitolo("Il linguaggio Object Oriented");
         art4.setTesto("Java e' un linguaggio OOP");
         art4.setImmagine("immagine4.png");
         art4.setData(05, 12, 2017);
-        art4.setValutazione(2);
+        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(4));
         art4.getCategorie().get(4).setCheck(true);
         articoli.add(art4);
         art2.getAutori().add(marco);
@@ -84,7 +85,7 @@ public class ArticoliFactory {
     public List<Articolo> getArticoliByAutore(Utente a) {
 
         List<Articolo> articoliAutore = new ArrayList<>();
-        List<Articolo> all = this.getArticoli();
+        List<Articolo> all= this.getArticoli();
 
         for (Articolo l : all) {
             for (Utente k : l.getAutori()) {

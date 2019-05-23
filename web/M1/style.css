@@ -71,7 +71,7 @@ sinistra*/
     }
     /*Style dei form all'interno delle pagine rispettivamente:
     registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
-    .login, .profilo, .articoli, .scriviArticolo{
+    .login, .profilo, .articoli, .scriviArticolo, .registrazione{
         width: 50%;
     }
 }
@@ -181,9 +181,6 @@ footer{
 .link{
     width: 100%;
 }
-.prova{
-    background-color: #2a2b2e;
-}
 /*Style del tabulato in articoli.html*/
 .colore1{
     background-color: #037171;
@@ -202,6 +199,9 @@ footer{
 .imgArticle{
     height: 25px;
     width: 25px;
+}
+.reg{
+    margin-left: 50px;
 }
 /*Style degli input checkbox in scriviArticolo.html*/
 .check, .autori{

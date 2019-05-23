@@ -21,7 +21,7 @@ public class Articolo {
     private String testo;
     private String immagine;
     private String data;
-    private int valutazione;
+    private Valutazione valutazione;
 
     public Articolo() {
         this.autori = new ArrayList<>();
@@ -131,14 +131,14 @@ public class Articolo {
     /**
      * @return the valutazione
      */
-    public int getValutazione() {
+    public Valutazione getValutazione() {
         return valutazione;
     }
 
     /**
      * @param valutazione the valutazione to set
      */
-    public void setValutazione(int valutazione) {
+    public void setValutazione(Valutazione valutazione) {
         this.valutazione = valutazione;
     }
 }

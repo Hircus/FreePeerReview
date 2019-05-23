@@ -14,13 +14,13 @@
         <meta name="author" content="Antonio Cossu">
         <meta name="keywords" content="FPW, Progetto, HTML, CSS, Java">
         <meta name="description" content="Pagina delle valutazioni">
-        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="M1/style.css" media="screen">
     </head>
     <body>
         <jsp:include page="header.jsp"/>
 
         <jsp:include page="clear.jsp"/>
-        
+
         <div class="row">
 
             <jsp:include page="nav.jsp"/>
@@ -30,13 +30,16 @@
             -->
             <main class="col-9">
                 <!--Titolo dell'articolo-->
-                <h1>La verità su machine learning e deep learning</h1>
+                <h1>${art.getTitolo()}</h1>
 
-                <!--Autori dell'articolo-->
+                <!--Autori dell'articolo-->                
                 <h2>Autori:</h2>
-                <div>Cossu Antonio</div>
+                <c:forEach begin="0" var="i" end="${maxAut}">
+                    <div>${art.getAutori().get(i).getNome()}</div>
+                </c:forEach>
 
                 <!--Immagine descrittiva dell'argomento-->
+                <br/>
                 <img src="img/article.jpeg" title="fotoarticolo" alt="Immagine illustrativa">
 
                 <!--Categorie descrittive dell'articolo in questione-->
@@ -45,10 +48,11 @@
 
                 <!--Data della scrittura-->
                 <h2>Data: </h2>
-                <div>05/04/2019</div>
+                <div>${art.getData()}</div>
 
-                <!--Testo in sè-->
-                <p>Ultimamente l'opinione pubblica sulle intelligenze artificiali sta cambiando: in pratica non sono gli strumenti che porteranno all'estinzione l'umanità; più semplicemente le IA attualmente sono programmate per imparare a compiere cose semplicissime e per fare questo ci vuole anche molto lavoro.</p>
+                <!--Testo-->
+                <h2>Testo: </h2>
+                <p>${art.getTesto()}</p>
                 <hr>
 
                 <!--Form per il voto tra 1 stella e 5 stelle-->
@@ -68,11 +72,11 @@
                     <div>
                         <label for=commAutori>Commenti per gli autori:</label>
                     </div>
-                    <textarea maxlength="300" rows="7" cols="80" id="commAutori"></textarea>
+                    <textarea maxlength="300" rows="7" cols="80" id="commAutori">${val.getCommAut()}</textarea>
                     <div>
                         <label for=commOrg>Commenti per gli organizzatori:</label>
                     </div> 
-                    <textarea maxlength="300" rows="7" cols="80" id="commOrg"></textarea>
+                    <textarea maxlength="300" rows="7" cols="80" id="commOrg">${val.getCommOrg()}</textarea>
                 </form>
                 <br/>
             </main>

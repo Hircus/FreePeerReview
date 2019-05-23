@@ -28,48 +28,40 @@
             <!--MAIN
             Main nel quale si possono modificare i dati della registrazione
             -->
-            <main class="col-9" id="profilo">
-                <h1>${titoloProfilo}</h1>
-                <form class="profilo" action="profilo.jsp" method="post">
+            <main class="col-9">
+                <h1>PROFILO</h1>
+                <form class="profilo" action="registrazione.html" method="post">
                     <div>
                         <label for="id_nome">Nome: </label>
-                        <input type="text" name="nomeUtente" id="id_nome" value= ${utente.getNome()} />
+                        <input type="text" name="nomeUtente" id="id_nome" value=${utente.getNome()}/>
                     </div>
 
                     <div>
                         <label for="id_cognome">Cognome: </label>
-                        <input type="text" name="cognome" id="id_cognome" value= ${utente.getCognome()} />
+                        <input type="text" name="cognome" id="id_cognome" value=${utente.getCognome()}/>
                     </div>
 
                     <div>
                         <label for="id_mail">E-mail: </label>
-                        <input type="text" name="mail" id="id_mail" value= ${utente.getEmail()} />
+                        <input type="text" name="mail" id="id_mail" value=${utente.getEmail()}/>
                     </div>
 
                     <div>
                         <label for="id_foto">Foto: </label>
-                        <input type="text" name="foto" id="id_foto" value= ${utente.getImmagine()}/>
+                        <input type="text" name="foto" id="id_foto" value=${utente.getImmagine()}/>
                     </div>
 
                     <div>
                         <label for="id_password">Password: </label>
-                        <input type="password" name="password" id="id_password" value= ${utente.getPassword()} />
+                        <input type="password" name="password" id="id_password" value=${utente.getPassword()}/>
                     </div>
 
                     <div>
                         <label for="id_ente">Ente: </label>
                         <input type="text" name="ente" id="id_ente" value=${utente.getEnte()}/>
                     </div>
-                    <button type="submit" class="pageButton">${button1}</button>
+                    <button type="submit" class="pageButton">SALVA</button>
                 </form>
-
-                <div>
-                    <form action="login.jsp" method="post">
-                        <label>Non sei più interessato?</label>
-                        <br/>
-                        <button type="submit" class="pageButton">${button2}</button>                    
-                    </form>
-                </div>
 
             </main>
         </div>

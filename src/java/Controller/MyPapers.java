@@ -39,7 +39,13 @@ public class MyPapers extends HttpServlet {
 
             Utente utente = (Utente) session.getAttribute("utente");
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-
+            
+            if (utente.getTipo().equals("Autore")) {
+                request.getRequestDispatcher("M1/articoli.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("M1/error.jsp").forward(request, response);
+            }
+            
             List<Articolo> articoli = (List<Articolo>) session.getAttribute("articoli");
             List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
 
@@ -51,11 +57,6 @@ public class MyPapers extends HttpServlet {
             session.setAttribute("articoli", articoli);
             session.setAttribute("all", tuttiArticoli);
             //carica una jsp
-            if (utente.getTipo().equals("Autore")) {
-                request.getRequestDispatcher("M1/articoli.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("M1/gestioneArticoli.jsp").forward(request, response);
-            }
         } else { //sennò l'utente non è autenticato
             request.getRequestDispatcher("M1/login.jsp").forward(request, response);
 

@@ -36,23 +36,14 @@ public class Register extends HttpServlet {
         String titoloProfilo;
         String button1;
         String button2;
+        Utente utente = new Utente();
 
         if (session.getAttribute("utenteId") != null) {
-            titoloProfilo = "Profilo";
-            button1 = "Salva";
-            button2 = "Elimina Profilo";
-            Utente utente = (Utente) session.getAttribute("utente");
-
+            utente= (Utente) session.getAttribute("utente");
+            request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
         } else {
-            titoloProfilo = "Registrazione";
-            button1 = "Registrati";
-            button2 = "Esci";
+            request.getRequestDispatcher("M1/registrazione.jsp").forward(request, response);
         }
-
-        session.setAttribute("titoloProfilo", titoloProfilo);
-        session.setAttribute("button1", button1);
-        session.setAttribute("button2", button2);
-        request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
