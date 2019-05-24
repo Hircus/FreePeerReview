@@ -59,11 +59,9 @@
                 <h2 id="voto">Valutazione:</h2>
                 <div>
                     <select name="voto">
-                        <option value="1">1 STELLA</option>
-                        <option value="2">2 STELLE</option>
-                        <option value="1">3 STELLE</option>
-                        <option value="1">4 STELLE</option>
-                        <option value="1">5 STELLE</option>
+                        <c:forEach begin="1" end="5" var="i">
+                            <option value="${i}"> ${i} STELLA/E</option>
+                        </c:forEach>
                     </select>
                 </div>
 
