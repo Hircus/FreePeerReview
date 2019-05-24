@@ -10,6 +10,7 @@
                 <img title="Main Image" alt="imgUnica" src="img/homepage.jpg"> 
                 <div id="title">Free Peer revieW</div>
             </div>
+            <br/>
         </header>
     </div>
 </html>

@@ -33,13 +33,9 @@ public class Register extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        String titoloProfilo;
-        String button1;
-        String button2;
-        Utente utente = new Utente();
 
         if (session.getAttribute("utenteId") != null) {
-            utente= (Utente) session.getAttribute("utente");
+            Utente utente= (Utente) session.getAttribute("utente");
             request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("M1/registrazione.jsp").forward(request, response);

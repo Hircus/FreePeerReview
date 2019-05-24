@@ -43,9 +43,8 @@ public class ArticoliFactory {
         art.setTesto("Python e' un ottimo linguaggio");
         art.setImmagine("immagine1.png");
         art.setData(05, 04, 2019);
-        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(1));
+        art.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(1));
         art.getCategorie().get(3).setCheck(true);
-        art.getAutori().add(gregorio);
         articoli.add(art);
 
         art2.setId(2);
@@ -63,8 +62,7 @@ public class ArticoliFactory {
         art3.setTesto("Il css e' una merda");
         art3.setImmagine("immagine3.png");
         art3.setData(17, 04, 2018);
-        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(3));
-        art3.getAutori().add(gregorio);
+        art3.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(3));
         art3.getCategorie().get(1).setCheck(true);
         articoli.add(art3);
         
@@ -73,10 +71,13 @@ public class ArticoliFactory {
         art4.setTesto("Java e' un linguaggio OOP");
         art4.setImmagine("immagine4.png");
         art4.setData(05, 12, 2017);
-        art2.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(4));
+        art4.setValutazione(ValutazioniFactory.getInstance().getValutazioneById(4));
         art4.getCategorie().get(4).setCheck(true);
         articoli.add(art4);
+        
+        art.getAutori().add(gregorio);
         art2.getAutori().add(marco);
+        art3.getAutori().add(gregorio);
         art4.getAutori().add(marco);
 
         return articoli;

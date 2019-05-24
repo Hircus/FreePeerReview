@@ -40,8 +40,10 @@ public class RatePaper extends HttpServlet {
             if(utente.getTipo().equals("Organizzatore")){
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
-            Articolo art= ArticoliFactory.getInstance().getArticoliByAutore(utente).get(1);
+            
+            Articolo art= ArticoliFactory.getInstance().getArticoliByAutore(utente).get(2);
             int maxAut= art.getAutori().size()-1;
+            
             Valutazione val= art.getValutazione();
             
             request.setAttribute("val", val);
