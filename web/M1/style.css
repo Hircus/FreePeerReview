@@ -93,9 +93,6 @@ body{
 a:hover{
     color: azure;
 }
-a:visited{
-    color: #05668d;
-}
 /*Style dei submit button*/
 button{
     background-color: teal;
@@ -183,10 +180,7 @@ footer{
 }
 /*Style del tabulato in articoli.html*/
 .colore1{
-    background-color: #037171;
-}
-.colore2{
-    background-color: #009f93;
+    background-color: #0d1321;
 }
 .nav{
     margin-left: -50px;
