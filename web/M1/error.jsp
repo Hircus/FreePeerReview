@@ -19,7 +19,7 @@
     <body>
         <div class="row">
             <aside class="col-3"></aside>
-            
+
             <main>
                 <h1>ACESSO NEGATO</h1>
                 <h2>Non si hanno i permessi per entrare in questa pagina</h2>
