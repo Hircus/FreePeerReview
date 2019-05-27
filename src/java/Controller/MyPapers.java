@@ -40,7 +40,7 @@ public class MyPapers extends HttpServlet {
             Utente utente = (Utente) session.getAttribute("utente");
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
 
-            if (utente.getTipo().equals("Organizzatore")) {
+            if (utente.getTipo() == false) {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
 
@@ -50,7 +50,7 @@ public class MyPapers extends HttpServlet {
 
             session.setAttribute("maxArtUtente", maxArtUtente);
             session.setAttribute("articoli", articoli);
-            
+
             request.getRequestDispatcher("M1/articoli.jsp").forward(request, response);
             //carica una jsp
         } else { //sennò l'utente non è autenticato

@@ -39,7 +39,7 @@ public class Manage extends HttpServlet {
         } else {
             Utente utente = (Utente) session.getAttribute("utente");
 
-            if (utente.getTipo().equals("Autore")) {
+            if (utente.getTipo()) {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             } else {
                 List<Articolo> all = (List<Articolo>) session.getAttribute("all");

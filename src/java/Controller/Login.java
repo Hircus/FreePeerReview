@@ -54,19 +54,18 @@ public class Login extends HttpServlet {
 
             Utente utente = AutoriFactory.getInstance().
                     getUtentebyID(utenteId);
-            
-            if (utente.getTipo().equals("Organizzatore")) {
+
+            if (utente.getTipo() == false) {
                 List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
                 int maxArt = tuttiArticoli.size() - 1;
 
                 session.setAttribute("maxArt", maxArt);
                 session.setAttribute("all", tuttiArticoli);
-                
+
                 request.getRequestDispatcher("M1/gestioneArticoli.jsp").forward(request, response);
             }
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
 
-            
             List<Articolo> articoli = ArticoliFactory.getInstance()
                     .getArticoliByAutore(utente);
             session.setAttribute("utente", utente);

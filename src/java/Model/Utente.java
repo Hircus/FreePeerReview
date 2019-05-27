@@ -18,7 +18,7 @@ public class Utente {
     private String password;
     private String immagine;
     private String ente;
-    private String tipo;
+    private Boolean autore;
 
     public Utente(){
     }
@@ -26,15 +26,15 @@ public class Utente {
     /**
      * @return the tipo
      */
-    public String getTipo() {
-        return tipo;
+    public Boolean getTipo() {
+        return autore;
     }
 
     /**
-     * @param tipo the tipo to set
+     * @param tipoUtente the tipoUtente to set
      */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(Boolean tipoUtente) {
+        this.autore = tipoUtente;
     }
 
     /**

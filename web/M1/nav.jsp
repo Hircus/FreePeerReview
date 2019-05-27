@@ -14,9 +14,7 @@
                 <button class="logout" name="logout" type="submit">LOGOUT</button>
             </form>
 
-            <c:set var="tipo" value="${utente.getTipo()}"/>
-            <c:set var="gestore" value="Organizzatore"/>
-            <c:if test="${tipo != gestore}">
+            <c:if test="${utente.getTipo()}">
                 <h2>I tuoi articoli:</h2>
                 <ul class="nav">
                     <c:forEach begin="0" end="${maxArtUtente}" var="i">

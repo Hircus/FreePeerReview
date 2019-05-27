@@ -6,6 +6,9 @@
 package Model;
 
 import java.util.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,7 +32,8 @@ public class ArticoliFactory {
     public List<Articolo> getArticoli() {
 
         List<Articolo> articoli = new ArrayList<>();
-        
+
+        /*
         Utente gregorio = AutoriFactory.getInstance().getUtentebyID(1);
         Utente marco = AutoriFactory.getInstance().getUtentebyID(3);
         
@@ -78,7 +82,27 @@ public class ArticoliFactory {
         art.getAutori().add(gregorio);
         art2.getAutori().add(marco);
         art3.getAutori().add(gregorio);
-        art4.getAutori().add(marco);
+        art4.getAutori().add(marco);*/
+        try {
+            Connection conn = DbManager.getInstance().getDbConnection();
+            Statement stmt = conn.createStatement();
+
+            String sql = "select * from articoli";
+            ResultSet set = stmt.executeQuery(sql);
+
+            while (set.next()) {
+                Articolo articolo = new Articolo();
+                articolo.setId(set.getInt("id"));
+                articolo.setTesto(set.getString("testo"));
+                articolo.setImmagine(set.getString("immagine"));
+                articolo.setDataByString(set.getString("dataScrittura"));
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         return articoli;
     }
@@ -86,7 +110,7 @@ public class ArticoliFactory {
     public List<Articolo> getArticoliByAutore(Utente a) {
 
         List<Articolo> articoliAutore = new ArrayList<>();
-        List<Articolo> all= this.getArticoli();
+        List<Articolo> all = this.getArticoli();
 
         for (Articolo l : all) {
             for (Utente k : l.getAutori()) {

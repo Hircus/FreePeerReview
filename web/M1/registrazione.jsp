@@ -30,51 +30,51 @@
             --> 
             <main class="col-9">
                 <h1>Registrazione</h1>
-                <form class="registrazione" action="login.html" method="post">
+                <form class="registrazione" action="registrazione.html" method="post">
 
                     <!--Nome-->
                     <div>
                         <label for="id_nome">Nome: </label>
-                        <input type="text" name="nomeUtente" id="id_nome"/>
+                        <input type="text" name="nome" id="id_nome" value="Antonio"/>
                     </div>
 
                     <!--Cognome-->
                     <div>
                         <label for="id_cognome">Cognome: </label>
-                        <input type="text" name="cognome" id="id_cognome"/> 
+                        <input type="text" name="cognome" id="id_cognome" value="Cossu"/>
                     </div>
 
                     <!--E-mail-->
                     <div>
                         <label for="id_mail">E-mail: </label>
-                        <input type="text" name="mail" id="id_mail"/> 
+                        <input type="text" name="email" id="id_mail" value="cossu@mail.com"/>
                     </div>
 
                     <!--Foto-->
                     <div>
                         <label for="id_foto">Foto:</label>
-                        <input type="text" name="foto" id="id_foto"/> 
+                        <input type="text" name="foto" id="id_foto" value="foto.png"/>
                     </div>
 
                     <!--Password-->
                     <div>
                         <label for="id_password">Password: </label>
-                        <input type="password" name="password" id="id_password"/> 
+                        <input type="password" name="password" id="id_password" value="ciao"/>
                     </div>
 
                     <!--Ente per cui si lavora-->
                     <div>
                         <label for="id_ente">Ente: </label>
-                        <input type="text" name="ente" id="id_ente"/> 
+                        <input type="text" name="ente" id="id_ente" value="Unica"/>
                     </div>
 
                     <!--Submit button per registrarsi-->
-                    <button type="submit" class="pageButton">Registrati</button>
+                    <button type="submit" name="check" class="pageButton">Registrati</button>
                 </form>
 
                 <form action="logout.html" method="post">
                     <label>Non sei più interessato?</label>
-                    <button type="submit" name="logout" class="pageButton reg">Elimina Profilo</button>                    
+                    <button type="submit" name="logout" class="pageButton reg">VAI AL LOGIN</button>                    
                 </form>
 
             </main>

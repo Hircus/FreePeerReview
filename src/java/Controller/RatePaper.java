@@ -31,27 +31,27 @@ public class RatePaper extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session= request.getSession();
-        
-        if(session.getAttribute("utenteId")!=null){
-            
-            Utente utente= (Utente) session.getAttribute("utente");
-            
-            if(utente.getTipo().equals("Organizzatore")){
+        HttpSession session = request.getSession();
+
+        if (session.getAttribute("utenteId") != null) {
+
+            Utente utente = (Utente) session.getAttribute("utente");
+
+            if (utente.getTipo() == false) {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
-            
-            Articolo art= ArticoliFactory.getInstance().getArticoliByAutore(utente).get(2);
-            int maxAut= art.getAutori().size()-1;
-            
-            Valutazione val= art.getValutazione();
-            
+
+            Articolo art = ArticoliFactory.getInstance().getArticoliByAutore(utente).get(2);
+            int maxAut = art.getAutori().size() - 1;
+
+            Valutazione val = art.getValutazione();
+
             request.setAttribute("val", val);
             request.setAttribute("art", art);
             request.setAttribute("maxAut", maxAut);
-            
+
             request.getRequestDispatcher("M1/valutazione.jsp").forward(request, response);
-        }else{
+        } else {
             request.getRequestDispatcher("M1/login.jsp").forward(request, response);
         }
     }
