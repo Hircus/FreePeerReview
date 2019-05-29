@@ -92,10 +92,12 @@ public class ArticoliFactory {
 
             while (set.next()) {
                 Articolo articolo = new Articolo();
-                articolo.setId(set.getInt("id"));
+                articolo.setId(set.getInt("idArticolo"));
+                articolo.setTitolo(set.getString("titolo"));
                 articolo.setTesto(set.getString("testo"));
                 articolo.setImmagine(set.getString("immagine"));
                 articolo.setDataByString(set.getString("dataScrittura"));
+                setAutori(articolo);
             }
 
             stmt.close();
@@ -105,6 +107,32 @@ public class ArticoliFactory {
         }
 
         return articoli;
+    }
+    
+    public void setAutori(Articolo articolo){
+        
+        try {
+            Connection conn = DbManager.getInstance().getDbConnection();
+
+            String sql = "select * from autore where idArticolo=?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setInt(1, articolo.getId());
+            
+            ResultSet set = stmt.executeQuery(sql);
+            
+            while (set.next()) {
+                Utente temp=AutoriFactory.getInstance().getUtentebyID(set.getInt("idUtente"));
+                articolo.getAutori().add(temp);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public List<Articolo> getArticoliByAutore(Utente a) {

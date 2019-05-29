@@ -113,7 +113,7 @@ public class AutoriFactory {
 
             if (set.next()) {
                 Utente utente = new Utente();
-                utente.setId(set.getInt("id"));
+                utente.setId(set.getInt("idUtente"));
                 utente.setNome(set.getString("nome"));
                 utente.setCognome(set.getString("cognome"));
                 utente.setEmail(set.getString("email"));
@@ -121,6 +121,7 @@ public class AutoriFactory {
                 utente.setImmagine(set.getString("immagine"));
                 utente.setTipo(set.getBoolean("tipoUtente"));
                 utente.setEnte(set.getString("ente"));
+                utente.setTipo(Boolean.TRUE);
                 stmt.close();
                 conn.close();
                 return utente;
@@ -183,11 +184,11 @@ public class AutoriFactory {
 
             /*String insert = "insert into utenti (id, nome, cognome, email, password, immagine, ente, tipoUtente)
                                 values (default, 'antonio', 'cossu', 'cossu@gmail.com', '123', 'foto', 'unica', true);";*/
-            String insert = "insert into utenti (id, nome, cognome, email, password, immagine, ente, tipoUtente)\n"
+            String insert = "insert into utenti (idUtente, nome, cognome, email, password, immagine, ente, tipoUtente)"
                     + "values (default, '" + nuovoUtente.getNome() + "','" 
                     + nuovoUtente.getCognome() + "','" + nuovoUtente.getEmail() 
                     + "','" + nuovoUtente.getPassword() + "','" + nuovoUtente.getImmagine() 
-                    + "','" + nuovoUtente.getEnte() + "'," + "true)";
+                    + "','" + nuovoUtente.getEnte() + "'," + "true);";
 
             Statement stmt = conn.createStatement();
 

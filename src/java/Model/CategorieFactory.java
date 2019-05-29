@@ -5,7 +5,13 @@
  */
 package Model;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +34,7 @@ public class CategorieFactory {
 
     public List<Categoria> getCategorie() {
         List<Categoria> categorie = new ArrayList();
-
+        /*
         Categoria ia = new Categoria("IA", false);
         Categoria web = new Categoria("WEB", false);
         Categoria java = new Categoria("JAVA", false);
@@ -42,7 +48,26 @@ public class CategorieFactory {
         categorie.add(python);
         categorie.add(oop);
         categorie.add(reti);
+        */
+        
+        try {
+            Connection conn = DbManager.getInstance().getDbConnection();
+            Statement stmt = conn.createStatement();
 
+            String sql = "select * from categorie";
+            ResultSet set = stmt.executeQuery(sql);
+
+            while (set.next()) {
+                Categoria cat= new Categoria();
+                cat.setNome(set.getString("nome"));
+                cat.setCheck(set.getBoolean("selezionata"));
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return categorie;
     }
 }

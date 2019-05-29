@@ -33,35 +33,38 @@ public class WritePaper extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        if (request.getParameter("pid") == null) {
+        Utente utente = (Utente) session.getAttribute("utente");
+
+        if (utente.getTipo() == false) {
             request.getRequestDispatcher("M1/error.jsp").forward(request, response);
-        } else {
-            int pid = Integer.parseInt(request.getParameter("pid"));
+        }
 
-            Utente utente = (Utente) session.getAttribute("utente");
-
-            if (utente.getTipo() == false) {
-                request.getRequestDispatcher("M1/error.jsp").forward(request, response);
-            }
-
-            Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
-            request.setAttribute("articolo", articolo);
-
-            if (request.getParameter("salva") != null) {
-                String titolo = request.getParameter("titolo");
-                String immagine = request.getParameter("immagine");
-                String data = request.getParameter("data");
-                String testo = request.getParameter("testo");
-
-                articolo.setTitolo(titolo);
-                articolo.setImmagine(immagine);
-                articolo.setTesto(testo); //bug che modifica la e accentata con altri caratteri (trovata soluzione temporanea)
-                articolo.setDataByString(data);
-            }
+        if (request.getParameter("pid") == null) {
+            Articolo articolo = new Articolo();
             request.setAttribute("articolo", articolo);
 
             request.getRequestDispatcher("M1/scriviArticolo.jsp").forward(request, response);
         }
+
+        int pid = Integer.parseInt(request.getParameter("pid"));
+        Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
+        request.setAttribute("articolo", articolo);
+
+        if (request.getParameter("salva") != null) {
+            String titolo = request.getParameter("titolo");
+            String immagine = request.getParameter("immagine");
+            String data = request.getParameter("data");
+            String testo = request.getParameter("testo");
+
+            articolo.setTitolo(titolo);
+            articolo.setImmagine(immagine);
+            articolo.setTesto(testo); //bug che modifica la e accentata con altri caratteri (trovata soluzione temporanea)
+            articolo.setDataByString(data);
+        }
+        request.setAttribute("articolo", articolo);
+
+        request.getRequestDispatcher("M1/scriviArticolo.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

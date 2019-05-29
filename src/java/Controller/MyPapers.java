@@ -35,11 +35,9 @@ public class MyPapers extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("utenteId") != null) {
-            int utenteId = (int) session.getAttribute("utenteId");
-
             Utente utente = (Utente) session.getAttribute("utente");
             //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-
+            
             if (utente.getTipo() == false) {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }

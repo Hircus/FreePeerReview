@@ -9,7 +9,7 @@
  */
 
 create table utenti(
-    id serial primary key,
+    idUtente serial primary key,
     nome varchar(100),
     cognome varchar(100),
     email varchar(100),
@@ -20,9 +20,32 @@ create table utenti(
 );
 
 create table articoli(
-    id serial primary key,
+    idArticolo serial primary key,
     titolo varchar(100),
     testo varchar(300),
     immagine varchar(100),
-    dataScrittura varchar(100)
+    dataScrittura varchar(100),
+    stato enum ('Aperto', 'Accettato', 'Rifiutato', 'Valutazione')
+    /*categoria set ('Python','C','Java','Js','R','C++'),*/
+);
+
+create table categorie(
+    idCategoria serial primary key,
+    nome varchar(100),
+    selezionata boolean
+);
+
+create table autori(
+    idUtente bigint unsigned references utente(idUtente) on delete cascade on update cascade,
+    idArticolo bigint unsigned REFERENCES articolo(idArticolo) on delete cascade on update cascade,
+    primary key (idUtente, idArticolo)
+);
+
+create table valutazione(
+    voto enum("1", "2", "3", "4", "5"),
+    commAut varchar(100),
+    commOrg varchar(100),
+    idUtente bigint unsigned references utente(idUtente) on delete cascade on update cascade,
+    idArticolo bigint unsigned REFERENCES articolo(idArticolo) on delete cascade on update cascade,
+    primary key (idUtente, idArticolo)
 );

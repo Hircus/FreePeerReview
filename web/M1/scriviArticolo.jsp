@@ -39,7 +39,7 @@
                         <label>Titolo:</label>
                         <input type="text" title="titolo" name="titolo" value="${articolo.getTitolo()}">
                     </div>
-
+                    
                     <!--Autori-->
                     <div class="row">
                         <label>Autori:</label>
@@ -48,7 +48,7 @@
                                    value="${articolo.getAutori().get(i).getNome()} ${articolo.getAutori().get(i).getCognome()}">
                         </c:forEach>
                     </div>
-
+                    
                     <!--Categorie a checkbox-->
                     <div class="row">
                         <label>Categorie:</label>
@@ -59,20 +59,8 @@
                                 <input type="checkbox" title="categorie" ${check} name="lang" value="${cat.getNome()}"/>${cat.getNome()}
                             </c:forEach>
                         </div>
-                        <!--
-                        <div class="check">
-                            <input type="checkbox" title="categorie" name="cat" value="ia"/>IA
-                            <input type="checkbox" title="categorie" name="cat" value="web"/>WEB
-                            <input type="checkbox" title="categorie" name="cat" value="java"/>Java
-                        </div>
-                        <div class="check">
-                            <input type="checkbox" title="categorie" name="cat" value="python"/>Python
-                            <input type="checkbox" title="categorie" name="cat" value="oop"/>OOP
-                            <input type="checkbox" title="categorie" name="cat" value="reti"/>Reti
-                        </div>
-                        -->
                     </div>
-
+                    
                     <!--Immagine-->
                     <div>
                         <label>Immagine:</label>

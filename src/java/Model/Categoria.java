@@ -18,6 +18,9 @@ public class Categoria {
         this.nome = nome;
         this.check = check;
     }
+    
+    
+    public Categoria(){}
 
     /**
      * @return the nome

@@ -6,6 +6,9 @@
 package Model;
 
 import java.util.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +31,7 @@ public class ValutazioniFactory {
     
     public List<Valutazione> getValutazioni(){
         List<Valutazione> valutazioni= new ArrayList<>();
-        
+        /*
         String comm1= "Ottima scrittura";
         String comm2= "Pessima argomentazione";
         
@@ -60,12 +63,32 @@ public class ValutazioniFactory {
         valutazioni.add(val2);
         valutazioni.add(val3);
         valutazioni.add(val4);
+        */
         
+        try{
+            Connection conn=DbManager.getInstance().getDbConnection();
+            Statement stmt= conn.createStatement();
+            
+            String sql= "select * from valutazione";
+            ResultSet set= stmt.executeQuery(sql);
+            
+            while(set.next()){
+                Valutazione val= new Valutazione();
+                val.setStelle(set.getInt("voto"));
+                val.setCommAut(set.getString("commAut"));
+                val.setCommOrg(set.getString("commOrg"));
+            }
+            stmt.close();
+            conn.close();
+            
+        }catch(SQLException e){
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, e);
+        }
         return valutazioni;
     }
     
     public Valutazione getValutazioneById(int id){
-       List<Valutazione> valutazioni= ValutazioniFactory.getInstance().getValutazioni();
+       List<Valutazione> valutazioni= this.getValutazioni();
        
        for (Valutazione v : valutazioni){
            if(v.getId()==id){

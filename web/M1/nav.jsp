@@ -15,15 +15,20 @@
             </form>
 
             <c:if test="${utente.getTipo()}">
-                <h2>I tuoi articoli:</h2>
                 <ul class="nav">
-                    <c:forEach begin="0" end="${maxArtUtente}" var="i">
-                        <li>
-                            <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
-                                ${articoli.get(i).getTitolo()}
-                            </a>
-                        </li>
-                    </c:forEach>
+                    <c:if test="${articoli.size()!=0}">
+                        <h1>Non sono presenti articoli</h1>
+                    </c:if>
+                    <c:if test="${articoli.size()!=0}">
+                        <h2>I tuoi articoli:</h2>
+                        <c:forEach begin="0" end="${maxArtUtente}" var="i">
+                            <li>
+                                <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
+                                    ${articoli.get(i).getTitolo()}
+                                </a>
+                            </li>
+                        </c:forEach>
+                    </c:if>
                 </ul>
             </c:if>
         </c:if>

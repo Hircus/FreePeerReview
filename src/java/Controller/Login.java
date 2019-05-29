@@ -43,6 +43,7 @@ public class Login extends HttpServlet {
                     getUtenteEmailPassword(password, email);
 
             if (utente != null) {
+                session.setAttribute("utente", utente);
                 session.setAttribute("utenteId", utente.getId());
             }
 
@@ -50,11 +51,8 @@ public class Login extends HttpServlet {
 
         //qui l'utente ha loggato sicuramente e autoreID è inizializzato
         if (session.getAttribute("utenteId") != null) {
-            int utenteId = (int) session.getAttribute("utenteId");
-
-            Utente utente = AutoriFactory.getInstance().
-                    getUtentebyID(utenteId);
-
+            Utente utente = (Utente)session.getAttribute("utente");
+            
             if (utente.getTipo() == false) {
                 List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
                 int maxArt = tuttiArticoli.size() - 1;
@@ -68,7 +66,6 @@ public class Login extends HttpServlet {
 
             List<Articolo> articoli = ArticoliFactory.getInstance()
                     .getArticoliByAutore(utente);
-            session.setAttribute("utente", utente);
             session.setAttribute("articoli", articoli);
             //carica una jsp
             request.getRequestDispatcher("articoli.html").forward(request, response);

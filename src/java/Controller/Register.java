@@ -63,13 +63,13 @@ public class Register extends HttpServlet {
             }
         }
 
-        /*
+        
         if (session.getAttribute("utenteId") != null) {
             Utente utente = (Utente) session.getAttribute("utente");
             request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("M1/registrazione.jsp").forward(request, response);
-        }*/
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
