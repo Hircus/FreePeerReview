@@ -33,29 +33,6 @@ public class AutoriFactory {
     public List<Utente> getUtenti() {
         List<Utente> utenti = new ArrayList<>();
 
-        /**
-         * Utente Gregorio = new Utente(); Utente Davide = new Utente(); Utente
-         * Marco = new Utente();
-         *
-         * Gregorio.setId(1); Gregorio.setNome("Gregorio");
-         * Gregorio.setCognome("Rivano");
-         * Gregorio.setEmail("gregorio@gmail.com");
-         * Gregorio.setPassword("sushi"); Gregorio.setImmagine("immagine.png");
-         * Gregorio.setEnte("Unica"); Gregorio.setTipo("Autore");
-         * autori.add(Gregorio);
-         *
-         * Davide.setId(2); Davide.setNome("Davide");
-         * Davide.setCognome("Piras"); Davide.setEmail("davide@gmail.com");
-         * Davide.setPassword("costata"); Davide.setImmagine("immagine.png");
-         * Davide.setTipo("Organizzatore"); Davide.setEnte("Uniss");
-         * autori.add(Davide);
-         *
-         * Marco.setId(3); Marco.setNome("Marco"); Marco.setCognome("Tomasi");
-         * Marco.setEmail("marco@gmail.com"); Marco.setPassword("computer");
-         * Marco.setImmagine("immagine.png"); Marco.setTipo("Autore");
-         * Marco.setEnte("Unica"); autori.add(Marco);
-         *
-         */
         try {
             Connection conn = DbManager.getInstance().getDbConnection();
             Statement stmt = conn.createStatement();
@@ -121,7 +98,7 @@ public class AutoriFactory {
                 utente.setImmagine(set.getString("immagine"));
                 utente.setTipo(set.getBoolean("tipoUtente"));
                 utente.setEnte(set.getString("ente"));
-                utente.setTipo(Boolean.TRUE);
+                utente.setTipo(set.getBoolean("tipoUtente"));
                 stmt.close();
                 conn.close();
                 return utente;
@@ -131,6 +108,43 @@ public class AutoriFactory {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public List<Utente> getUtentiByArticolo(Articolo art){
+
+        List<Utente> utentiArticoli = new ArrayList<>();
+        
+        try {
+            Connection conn = DbManager.getInstance().getDbConnection();
+
+            String sql = "select * from utenti inner join autori on autori.idUtente = utenti.idUtente where autori.idArticolo = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, art.getId());
+
+            ResultSet set = stmt.executeQuery();
+
+            while (set.next()) {
+                Utente utente = new Utente();
+                utente.setId(set.getInt("idUtente"));
+                utente.setNome(set.getString("nome"));
+                utente.setCognome(set.getString("cognome"));
+                utente.setEmail(set.getString("email"));
+                utente.setPassword(set.getString("password"));
+                utente.setImmagine(set.getString("immagine"));
+                utente.setTipo(set.getBoolean("tipoUtente"));
+                utente.setEnte(set.getString("ente"));
+                utente.setTipo(set.getBoolean("tipoUtente"));
+                utentiArticoli.add(utente);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return utentiArticoli;
     }
 
     public Boolean deleteUtente(int id) {
@@ -176,14 +190,8 @@ public class AutoriFactory {
     public Boolean insertUtente(Utente nuovoUtente) {
         Connection conn = null;
         try {
-            /*String insert = "INSERT INTO utenti(id, nome, cognome, email, "
-                    + "password, immagine, ente, tipoUtente)VALUES WHEN (default, "
-                    + "nome=?, cognome=?, email=?, password=?, immagine=?, ente=?, tipoUtente=?";*/
-
             conn = DbManager.getInstance().getDbConnection();
 
-            /*String insert = "insert into utenti (id, nome, cognome, email, password, immagine, ente, tipoUtente)
-                                values (default, 'antonio', 'cossu', 'cossu@gmail.com', '123', 'foto', 'unica', true);";*/
             String insert = "insert into utenti (idUtente, nome, cognome, email, password, immagine, ente, tipoUtente)"
                     + "values (default, '" + nuovoUtente.getNome() + "','" 
                     + nuovoUtente.getCognome() + "','" + nuovoUtente.getEmail() 

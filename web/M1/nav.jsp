@@ -16,7 +16,7 @@
 
             <c:if test="${utente.getTipo()}">
                 <ul class="nav">
-                    <c:if test="${articoli.size()!=0}">
+                    <c:if test="${articoli.size()<=0}">
                         <h1>Non sono presenti articoli</h1>
                     </c:if>
                     <c:if test="${articoli.size()!=0}">

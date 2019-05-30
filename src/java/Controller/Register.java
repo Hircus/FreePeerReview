@@ -36,9 +36,31 @@ public class Register extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        if (request.getParameter("registrati") != null) {
-            request.getRequestDispatcher("M1/registrazione.jsp").forward(request, response);
+        Object id= session.getAttribute("utenteId");
+        String titolo;
+        String button1;
+        String button2;
+        Utente utente;
+        
+        if (id == null) {
+            utente= new Utente();
+            
+            titolo="REGISTRAZIONE";
+            button1="REGISTRATI";
+            button2="ESCI";
+            
+            session.setAttribute("button2", button2);
+        }else{
+            utente = (Utente) session.getAttribute("utente");
+            titolo="PROFILO";
+            button1="SALVA";
         }
+        
+        session.setAttribute("titolo", titolo);
+        session.setAttribute("button1", button1);
+        session.setAttribute("utente", utente);
+        request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
+        
         if (request.getParameter("check") != null) {
 
             String nome = request.getParameter("nome");
@@ -61,14 +83,6 @@ public class Register extends HttpServlet {
             } else {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
-        }
-
-        
-        if (session.getAttribute("utenteId") != null) {
-            Utente utente = (Utente) session.getAttribute("utente");
-            request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("M1/registrazione.jsp").forward(request, response);
         }
     }
 

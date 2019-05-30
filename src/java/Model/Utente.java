@@ -19,9 +19,7 @@ public class Utente {
     private String immagine;
     private String ente;
     private Boolean autore;
-
-    public Utente(){
-    }
+    
     
     /**
      * @return the tipo

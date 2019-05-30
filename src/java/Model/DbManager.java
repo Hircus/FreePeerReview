@@ -33,7 +33,7 @@ public class DbManager {
     }
     
     public Connection getDbConnection(){
-        String db= "jdbc:mysql://localhost:3306/fpw19_DbCossuAntonio?zeroDateTimeBehavior";
+        String db= "jdbc:mysql://localhost:3306/fpw19_DbCossuAntonio?zeroDateTimeBehavior=convertToNull";
         
         try{
             Connection conn= DriverManager.getConnection(db, "fpw19_CossuAntonio", "freePeerReview");
