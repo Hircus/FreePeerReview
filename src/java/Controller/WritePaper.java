@@ -35,10 +35,8 @@ public class WritePaper extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utente utente = (Utente) session.getAttribute("utente");
-        
-        String head = null, action = null, title = null, nome = null, 
-                cognome = null, categorie, immagine = null, data = null, testo = null;
-        List<Utente> autori = null;
+        List<String> categorie= CategorieFactory.getInstance().getCategorie();
+        String head = null, title = null, immagine = null, data = null, testo = null;
         if (utente.getTipo() == false) {
             request.getRequestDispatcher("M1/error.jsp").forward(request, response);
         }
@@ -48,7 +46,6 @@ public class WritePaper extends HttpServlet {
             List<Articolo> articoli = null;
 
             head = "SCRIVI ARTICOLO";
-            action = "scriviArticolo.html";
         }
         if (request.getParameter("pid") != null) {
             int pid = Integer.parseInt(request.getParameter("pid"));
@@ -56,36 +53,22 @@ public class WritePaper extends HttpServlet {
             request.setAttribute("articolo", articolo);
 
             head = "MODIFICA ARTICOLO";
-            action = "scriviArticolo.html?pid=${articoli.get(i).getId()";
             title = articolo.getTitolo();
-            autori = articolo.getAutori();
             immagine = articolo.getImmagine();
             data = articolo.getData();
             testo = articolo.getTesto();
 
             if (request.getParameter("salva") != null) {
-                String titoloArt = request.getParameter("titolo");
-                String immagineArt = request.getParameter("immagine");
-                String dataArt = request.getParameter("data");
-                String testoArt = request.getParameter("testo");
-
-                articolo.setTitolo(titoloArt);
-                articolo.setImmagine(immagineArt);
-                articolo.setTesto(testoArt); //bug che modifica la e accentata con altri caratteri (trovata soluzione temporanea)
-                articolo.setDataByString(dataArt);
+                /*Da implementare il salva articolo*/
             }
-            request.setAttribute("articolo", articolo);
         }
         
+        request.setAttribute("categorie", categorie);
         request.setAttribute("head", head);
-        request.setAttribute("action", action);
         request.setAttribute("title", title);
-        request.setAttribute("nome", nome);
-        request.setAttribute("cognome", cognome);
         request.setAttribute("immagine", immagine);
         request.setAttribute("data", data);
         request.setAttribute("testo", testo);
-        request.setAttribute("autori", autori);
 
         request.getRequestDispatcher("M1/scriviArticolo.jsp").forward(request, response);
 

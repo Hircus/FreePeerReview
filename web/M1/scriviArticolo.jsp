@@ -32,61 +32,80 @@
                 <h1>${head}</h1>
 
                 <!--Form per inserire i dati-->
-                <form class="scriviArticolo" method="post" action="${action}">
 
-                    <!--Titolo-->
-                    <div>
-                        <label>Titolo:</label>
-                        <input type="text" title="titolo" name="titolo" value="${title}">
-                    </div>
-
-                    <!--Autori-->
-                    <div class="row">
-                        <label>Autori:</label>
-                        <c:choose>
-                            <c:when test="${articolo!=null}">
-                                <c:forEach begin="0" end="${autori.size()-1}" var="i">
-                                    <input class="autori" type="text" title="autori" name="autori"
-                                           value="${autori.get(i).getNome()} ${autori.get(i).getCognome()}">
-                                </c:forEach>
-                            </c:when>
-                            <c:when test="${articolo==null}">
-                                <input class="autori" type="text" title="autori" name="autori">
+                <c:choose>
+                    <c:when test="${articolo!=null}">
+                        <form class="scriviArticolo" method="post" action="scriviArticolo.html?pid=${articolo.getId()}">
+                        </c:when>
+                        <c:when test="${articolo==null}">
+                            <form class="scriviArticolo" method="post" action="scriviArticolo.html">
                             </c:when>
                         </c:choose>
-                    </div>
-
-                    <!--Categorie a checkbox-->
-                    <div class="row">
-                        <label>Categorie:</label>
-                        <div class="check">
-
+                        <!--Titolo-->
+                        <div>
+                            <label>Titolo:</label>
+                            <input type="text" title="titolo" name="titolo" value="${title}">
                         </div>
-                    </div>
 
-                    <!--Immagine-->
-                    <div>
-                        <label>Immagine:</label>
-                        <input type="text" title="immagine" name="immagine" value="${immagine}">
-                    </div>
+                        <!--Autori-->
+                        <div class="row">
+                            <label>Autori:</label>
+                            <c:choose>
+                                <c:when test="${articolo!=null}">
+                                    <c:forEach begin="0" end="${articolo.getAutori().size()-1}" var="i">
+                                        <input class="autori" type="text" title="autori" name="autori"
+                                               value="${articolo.getAutori().get(i).getNome()} ${articolo.getAutori().get(i).getCognome()}">
+                                    </c:forEach>
+                                </c:when>
+                                <c:when test="${articolo==null}">
+                                    <input class="autori" type="text" title="autori" name="autori">
+                                </c:when>
+                            </c:choose>
+                        </div>
 
-                    <!--Data-->
-                    <div>
-                        <label>Data:</label>
-                        <input type="text" name="data" value="${data}">
-                    </div>
+                        <!--Categorie a checkbox-->
+                        <div class="row">
+                            <label>Categorie:</label>
+                            <div class="check">
+                                <c:choose>
+                                    <c:when test="${articolo!=null}">
+                                        <c:forEach items="${categorie}" var="i">
+                                            <c:if test="${articolo.getCategorie().contains(i)}">
+                                                <input type="checkbox" name="cat" id="${i}" checked>
+                                            </c:if>
+                                            <c:if test="${!(articolo.getCategorie().contains(i))}">
+                                                <input type="checkbox" name="cat" id="${i}">
+                                            </c:if>
+                                            <label for="${i}"/>${i}
+                                        </c:forEach>
+                                    </c:when>
+                                </c:choose>
+                            </div>
+                        </div>
 
-                    <!--Testo dell'articolo-->
-                    <div>
-                        <label>Testo:</label>
-                        <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${testo}</textarea>
-                    </div>
+                        <!--Immagine-->
+                        <div>
+                            <label>Immagine:</label>
+                            <input type="text" title="immagine" name="immagine" value="${immagine}">
+                        </div>
 
-                    <!--Premere per proseguire-->
-                    <div>
-                        <button class="pageButton" name="salva" type="submit">SALVA ARTICOLO</button>    
-                    </div>
-                </form>
+                        <!--Data-->
+                        <div>
+                            <label>Data:</label>
+                            <input type="text" name="data" value="${data}">
+                        </div>
+
+                        <!--Testo dell'articolo-->
+                        <div>
+                            <label>Testo:</label>
+                            <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${testo}</textarea>
+                        </div>
+
+                        <!--Premere per proseguire-->
+                        <div>
+                            <button class="pageButton" name="salva" type="submit">SALVA ARTICOLO</button>    
+                        </div>
+                    </form>
             </main>
         </div>
 

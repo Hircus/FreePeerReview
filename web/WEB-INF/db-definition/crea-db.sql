@@ -25,8 +25,8 @@ create table articoli(
     testo varchar(300),
     immagine varchar(100),
     dataScrittura varchar(100),
-    stato enum ('Aperto', 'Accettato', 'Rifiutato', 'Valutazione')
-    /*categoria set ('Python','C','Java','Js','R','C++')*/
+    stato enum ('Aperto', 'Accettato', 'Rifiutato', 'Valutazione'),
+    categorie set ('Python','C','Java','Js','R','C++')
 );
 
 create table categorie(

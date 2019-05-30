@@ -8,5 +8,9 @@
  * Created: 30-mag-2019
  */
 
-insert into categorie (idCategoria, nome, selezionata) 
-    values (default, 'Python', false) (default, 'C', false) (default, 'C++', false) (default, 'Js', false) (default, 'Java', false) (default, 'R', false);
+insert into categorie (nome) values ('Python');
+insert into categorie (nome) values ('C');
+insert into categorie (nome) values ('Java');
+insert into categorie (nome) values ('R');
+insert into categorie (nome) values ('Js');
+insert into categorie (nome) values ('C++');

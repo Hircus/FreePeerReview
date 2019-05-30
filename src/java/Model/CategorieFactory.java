@@ -32,23 +32,8 @@ public class CategorieFactory {
         return singleton;
     }
 
-    public List<Categoria> getCategorie() {
-        List<Categoria> categorie = new ArrayList();
-        /*
-        Categoria ia = new Categoria("IA", false);
-        Categoria web = new Categoria("WEB", false);
-        Categoria java = new Categoria("JAVA", false);
-        Categoria python = new Categoria("Python", false);
-        Categoria oop = new Categoria("OOP", false);
-        Categoria reti = new Categoria("Reti", false);
-
-        categorie.add(ia);
-        categorie.add(web);
-        categorie.add(java);
-        categorie.add(python);
-        categorie.add(oop);
-        categorie.add(reti);
-        */
+    public List<String> getCategorie() {
+        List<String> categorie = new ArrayList();
         
         try {
             Connection conn = DbManager.getInstance().getDbConnection();
@@ -58,9 +43,9 @@ public class CategorieFactory {
             ResultSet set = stmt.executeQuery(sql);
 
             while (set.next()) {
-                Categoria cat= new Categoria();
-                cat.setNome(set.getString("nome"));
-                cat.setCheck(set.getBoolean("selezionata"));
+                String cat;
+                cat=set.getString("nome");
+                categorie.add(cat);
             }
 
             stmt.close();
