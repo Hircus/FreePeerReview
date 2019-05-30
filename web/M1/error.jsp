@@ -17,13 +17,20 @@
         <link rel="stylesheet" type="text/css" href="M1/style.css" media="screen">
     </head>
     <body>
+
+        <!-- Include header here -->
+        <jsp:include page="header.jsp"/>
+
         <div class="row">
             <aside class="col-3"></aside>
 
-            <main>
+            <main class="col-9">
                 <h1>ACESSO NEGATO</h1>
                 <h2>Non si hanno i permessi per entrare in questa pagina</h2>
             </main>
         </div>
+
+        <!-- Include footer here -->
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

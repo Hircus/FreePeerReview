@@ -22,12 +22,12 @@
         <jsp:include page="header.jsp"/>
 
         <!-- Include clear here -->
-        <jsp:include page="clear.jsp"/>
+        <jsp:include page="navbar.jsp"/>
 
         <div class="row">
 
             <!-- Include nav here -->
-            <jsp:include page="nav.jsp"/>
+            <jsp:include page="sidebar.jsp"/>
 
             <!--MAIN
             Tabella in cui sono presenti gli articoli del database

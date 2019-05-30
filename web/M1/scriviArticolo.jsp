@@ -19,11 +19,11 @@
     <body>
         <jsp:include page="header.jsp"/>
 
-        <jsp:include page="clear.jsp"/>
+        <jsp:include page="navbar.jsp"/>
 
         <div class="row">
 
-            <jsp:include page="nav.jsp"/>
+            <jsp:include page="sidebar.jsp"/>
 
             <!--MAIN
             PAgina in cui si possono scrivere articoli pubblici

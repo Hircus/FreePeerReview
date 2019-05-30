@@ -19,13 +19,13 @@
     <body>
         <jsp:include page="header.jsp"/>
         <c:if test="${utente.getId()!=0}">
-            <jsp:include page="clear.jsp"/>
+            <jsp:include page="navbar.jsp"/>
         </c:if>
 
 
         <div class="row">
             <c:if test="${utente.getId()!=0}">
-                <jsp:include page="nav.jsp"/>
+                <jsp:include page="sidebar.jsp"/>
             </c:if>
             
             <c:if test="${utente.getId()==0}">
