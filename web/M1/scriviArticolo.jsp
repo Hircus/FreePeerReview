@@ -29,54 +29,57 @@
             PAgina in cui si possono scrivere articoli pubblici
             -->
             <main class="col-9">
-                <h1>SCRIVI ARTICOLO</h1>
+                <h1>${head}</h1>
 
                 <!--Form per inserire i dati-->
-                <form class="scriviArticolo" method="post" action="scriviArticolo.html?pid=${articoli.get(i).getId()}">
+                <form class="scriviArticolo" method="post" action="${action}">
 
                     <!--Titolo-->
                     <div>
                         <label>Titolo:</label>
-                        <input type="text" title="titolo" name="titolo" value="${articolo.getTitolo()}">
+                        <input type="text" title="titolo" name="titolo" value="${title}">
                     </div>
-                    
+
                     <!--Autori-->
                     <div class="row">
                         <label>Autori:</label>
-                        <c:forEach begin="0" end="${articolo.getAutori().size()-1}" var="i">
-                            <input class="autori" type="text" title="autori" name="autori"
-                                   value="${articolo.getAutori().get(i).getNome()} ${articolo.getAutori().get(i).getCognome()}">
-                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${articolo!=null}">
+                                <c:forEach begin="0" end="${autori.size()-1}" var="i">
+                                    <input class="autori" type="text" title="autori" name="autori"
+                                           value="${autori.get(i).getNome()} ${autori.get(i).getCognome()}">
+                                </c:forEach>
+                            </c:when>
+                            <c:when test="${articolo==null}">
+                                <input class="autori" type="text" title="autori" name="autori">
+                            </c:when>
+                        </c:choose>
                     </div>
-                    
+
                     <!--Categorie a checkbox-->
                     <div class="row">
                         <label>Categorie:</label>
                         <div class="check">
-                            <c:forEach items="${articolo.getCategorie()}" var="cat">
-                                <c:if test="${cat.isCheck()}"><c:set var="check" value="checked"/></c:if>
-                                <c:if test="${!cat.isCheck()}"><c:set var="check" value=""/></c:if>
-                                <input type="checkbox" title="categorie" ${check} name="lang" value="${cat.getNome()}"/>${cat.getNome()}
-                            </c:forEach>
+
                         </div>
                     </div>
-                    
+
                     <!--Immagine-->
                     <div>
                         <label>Immagine:</label>
-                        <input type="text" title="immagine" name="immagine" value=${articolo.getImmagine()}>
+                        <input type="text" title="immagine" name="immagine" value="${immagine}">
                     </div>
 
                     <!--Data-->
                     <div>
                         <label>Data:</label>
-                        <input type="text" name="data" value=${articolo.getData().toString()}>
+                        <input type="text" name="data" value="${data}">
                     </div>
 
                     <!--Testo dell'articolo-->
                     <div>
                         <label>Testo:</label>
-                        <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${articolo.getTesto()}</textarea>
+                        <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${testo}</textarea>
                     </div>
 
                     <!--Premere per proseguire-->

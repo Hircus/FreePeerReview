@@ -69,7 +69,7 @@
                         </table>
                     </c:if>
                     <!--Submit per scrivere un nuovo articolo-->
-                    <button type="submit" class="pageButton">SCRIVI UN ARTICOLO</button>
+                    <button type="submit" name="scriviArticolo" class="pageButton">SCRIVI UN ARTICOLO</button>
                 </form>
             </main>
         </div>

@@ -15,21 +15,12 @@ public class Articolo {
 
     private int id;
     private List<Utente> autori;
-    private List<Categoria> categorie = CategorieFactory.getInstance()
-            .getCategorie();
+    private String categorie = "";
     private String titolo;
     private String testo;
     private String immagine;
     private String data;
     private Valutazione valutazione;
-
-    public Articolo() {
-        this.autori = new ArrayList<>();
-        this.titolo= "";
-        this.testo= "";
-        this.immagine= "";
-        this.data= "";
-    }
 
     /**
      * @return the id
@@ -59,10 +50,11 @@ public class Articolo {
         this.autori = autori;
     }
 
-    /**
-     * @return the categorie
-     */
-    public List<Categoria> getCategorie() {
+    public void addCategoria(String nuovaCategoria) {
+        categorie += nuovaCategoria;
+    }
+
+    public String getCategorie() {
         return categorie;
     }
 

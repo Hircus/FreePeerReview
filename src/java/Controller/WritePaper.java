@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.util.*;
 
 /**
  *
@@ -34,34 +35,57 @@ public class WritePaper extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utente utente = (Utente) session.getAttribute("utente");
-
+        
+        String head = null, action = null, title = null, nome = null, 
+                cognome = null, categorie, immagine = null, data = null, testo = null;
+        List<Utente> autori = null;
         if (utente.getTipo() == false) {
             request.getRequestDispatcher("M1/error.jsp").forward(request, response);
         }
 
-        if (request.getParameter("pid") == null) {
-            Articolo articolo = new Articolo();
+        if (request.getParameter("scriviArticolo") != null) {
+            Articolo articolo = null;
+            List<Articolo> articoli = null;
+
+            head = "SCRIVI ARTICOLO";
+            action = "scriviArticolo.html";
+        }
+        if (request.getParameter("pid") != null) {
+            int pid = Integer.parseInt(request.getParameter("pid"));
+            Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
             request.setAttribute("articolo", articolo);
 
-            request.getRequestDispatcher("M1/scriviArticolo.jsp").forward(request, response);
+            head = "MODIFICA ARTICOLO";
+            action = "scriviArticolo.html?pid=${articoli.get(i).getId()";
+            title = articolo.getTitolo();
+            autori = articolo.getAutori();
+            immagine = articolo.getImmagine();
+            data = articolo.getData();
+            testo = articolo.getTesto();
+
+            if (request.getParameter("salva") != null) {
+                String titoloArt = request.getParameter("titolo");
+                String immagineArt = request.getParameter("immagine");
+                String dataArt = request.getParameter("data");
+                String testoArt = request.getParameter("testo");
+
+                articolo.setTitolo(titoloArt);
+                articolo.setImmagine(immagineArt);
+                articolo.setTesto(testoArt); //bug che modifica la e accentata con altri caratteri (trovata soluzione temporanea)
+                articolo.setDataByString(dataArt);
+            }
+            request.setAttribute("articolo", articolo);
         }
-
-        int pid = Integer.parseInt(request.getParameter("pid"));
-        Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
-        request.setAttribute("articolo", articolo);
-
-        if (request.getParameter("salva") != null) {
-            String titolo = request.getParameter("titolo");
-            String immagine = request.getParameter("immagine");
-            String data = request.getParameter("data");
-            String testo = request.getParameter("testo");
-
-            articolo.setTitolo(titolo);
-            articolo.setImmagine(immagine);
-            articolo.setTesto(testo); //bug che modifica la e accentata con altri caratteri (trovata soluzione temporanea)
-            articolo.setDataByString(data);
-        }
-        request.setAttribute("articolo", articolo);
+        
+        request.setAttribute("head", head);
+        request.setAttribute("action", action);
+        request.setAttribute("title", title);
+        request.setAttribute("nome", nome);
+        request.setAttribute("cognome", cognome);
+        request.setAttribute("immagine", immagine);
+        request.setAttribute("data", data);
+        request.setAttribute("testo", testo);
+        request.setAttribute("autori", autori);
 
         request.getRequestDispatcher("M1/scriviArticolo.jsp").forward(request, response);
 

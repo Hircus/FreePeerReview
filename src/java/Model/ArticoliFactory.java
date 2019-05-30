@@ -47,6 +47,8 @@ public class ArticoliFactory {
                 articolo.setTesto(set.getString("testo"));
                 articolo.setImmagine(set.getString("immagine"));
                 articolo.setDataByString(set.getString("dataScrittura"));
+                articolo.setAutori(AutoriFactory.getInstance().getUtentiByArticolo(articolo));
+                articolo.addCategoria(set.getString("categorie"));
                 articoli.add(articolo);
             }
 
@@ -75,14 +77,15 @@ public class ArticoliFactory {
             ResultSet set = stmt.executeQuery();
 
             while (set.next()) {
-                Articolo art= new Articolo();
-                art.setId(set.getInt("idArticolo"));
-                art.setTitolo(set.getString("titolo"));
-                art.setTesto(set.getString("testo"));
-                art.setDataByString(set.getString("dataScrittura"));
-                art.setImmagine(set.getString("immagine"));
-                art.setAutori(AutoriFactory.getInstance().getUtentiByArticolo(art));
-                articoliAutore.add(art);
+                Articolo articolo= new Articolo();
+                articolo.setId(set.getInt("idArticolo"));
+                articolo.setTitolo(set.getString("titolo"));
+                articolo.setTesto(set.getString("testo"));
+                articolo.setDataByString(set.getString("dataScrittura"));
+                articolo.setImmagine(set.getString("immagine"));
+                articolo.setAutori(AutoriFactory.getInstance().getUtentiByArticolo(articolo));
+                articolo.addCategoria(set.getString("categorie"));
+                articoliAutore.add(articolo);
             }
 
             stmt.close();
@@ -105,14 +108,15 @@ public class ArticoliFactory {
     }
 
     public List<Articolo> getArticolobyCategory(String category) {
-
-        List<Articolo> cat = new ArrayList<>();
-        List<Articolo> all = this.getArticoli();
-        for (Articolo l : all) {
-            if (l.getCategorie().contains(category)) {
-                cat.add(l);
+        
+        List<Articolo> articoli= new ArrayList<>();
+        List<Articolo> all= this.getArticoli();
+        
+        for (Articolo a: all){
+            if(a.getCategorie().contains(category)){
+                articoli.add(a);
             }
         }
-        return cat;
+        return articoli;
     }
 }
