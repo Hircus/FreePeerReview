@@ -79,6 +79,12 @@
                                             <label for="${i}"/>${i}
                                         </c:forEach>
                                     </c:when>
+                                    <c:when  test="${articolo==null}">
+                                        <c:forEach items="${categorie}" var="i">
+                                                <input type="checkbox" name="cat" value="${i}" id="${i}">
+                                                <label for="${i}"/>${i}
+                                        </c:forEach>
+                                    </c:when>
                                 </c:choose>
                             </div>
                         </div>

@@ -35,21 +35,22 @@ public class WritePaper extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utente utente = (Utente) session.getAttribute("utente");
-        List<String> categorie= CategorieFactory.getInstance().getCategorie();
+        List<String> categorie = CategorieFactory.getInstance().getCategorie();
         String head = null, title = null, immagine = null, data = null, testo = null;
+        Articolo articolo = null;
+
         if (utente.getTipo() == false) {
             request.getRequestDispatcher("M1/error.jsp").forward(request, response);
         }
 
         if (request.getParameter("scriviArticolo") != null) {
-            Articolo articolo = null;
             List<Articolo> articoli = null;
 
             head = "SCRIVI ARTICOLO";
         }
         if (request.getParameter("pid") != null) {
             int pid = Integer.parseInt(request.getParameter("pid"));
-            Articolo articolo = ArticoliFactory.getInstance().getArticoloId(pid);
+            articolo = ArticoliFactory.getInstance().getArticoloId(pid);
             request.setAttribute("articolo", articolo);
 
             head = "MODIFICA ARTICOLO";
@@ -57,12 +58,36 @@ public class WritePaper extends HttpServlet {
             immagine = articolo.getImmagine();
             data = articolo.getData();
             testo = articolo.getTesto();
+        }
 
-            if (request.getParameter("salva") != null) {
-                /*Da implementare il salva articolo*/
+        if (request.getParameter("salva") != null) {
+            String autore = request.getParameter("autori");
+            if (AutoriFactory.getInstance().searchUtente(autore)) {
+                boolean inserimento = false;
+                String titolo = request.getParameter("titolo");
+                String foto = request.getParameter("immagine");
+                String date = request.getParameter("data");
+                String text = request.getParameter("testo");
+                String[] cat = request.getParameterValues("cat");
+                articolo = new Articolo();
+                if (titolo != null && autore != null && foto != null && date != null && text != null) {
+
+                    for (int i = 0; i < cat.length; i++) {
+                        articolo.addCategoria(cat[i]);
+                    }
+                    articolo.setTitolo(titolo);
+                    articolo.setImmagine(foto);
+                    articolo.setDataByString(date);
+                    articolo.setTesto(testo);
+                    inserimento = ArticoliFactory.getInstance().insertArticolo(articolo, utente);
+
+                    if (inserimento) {
+                        request.getRequestDispatcher("articoli.html").forward(request, response);
+                    }
+                }
             }
         }
-        
+
         request.setAttribute("categorie", categorie);
         request.setAttribute("head", head);
         request.setAttribute("title", title);

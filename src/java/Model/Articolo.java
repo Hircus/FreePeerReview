@@ -15,11 +15,12 @@ public class Articolo {
 
     private int id;
     private List<Utente> autori;
-    private String categorie = "";
+    private String categorie="";
     private String titolo;
     private String testo;
     private String immagine;
     private String data;
+    private String stato;
     private Valutazione valutazione;
 
     /**
@@ -51,6 +52,7 @@ public class Articolo {
     }
 
     public void addCategoria(String nuovaCategoria) {
+        if(!(categorie.equals(""))) categorie += ",";
         categorie += nuovaCategoria;
     }
 
@@ -118,6 +120,20 @@ public class Articolo {
 
     public void setDataByString(String data) {
         this.data = data;
+    }
+
+    /**
+     * @return the stato
+     */
+    public String getStato() {
+        return stato;
+    }
+
+    /**
+     * @param stato the stato to set
+     */
+    public void setStato(String stato) {
+        this.stato = stato;
     }
 
     /**

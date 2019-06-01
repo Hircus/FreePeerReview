@@ -109,11 +109,11 @@ public class AutoriFactory {
         }
         return null;
     }
-    
-    public List<Utente> getUtentiByArticolo(Articolo art){
+
+    public List<Utente> getUtentiByArticolo(Articolo art) {
 
         List<Utente> utentiArticoli = new ArrayList<>();
-        
+
         try {
             Connection conn = DbManager.getInstance().getDbConnection();
 
@@ -147,7 +147,7 @@ public class AutoriFactory {
         return utentiArticoli;
     }
 
-    public Boolean deleteUtente(int id) {
+    public boolean deleteUtente(int id) {
         Connection conn = null;
         try {
             conn = DbManager.getInstance().getDbConnection();
@@ -187,15 +187,15 @@ public class AutoriFactory {
         return true;
     }
 
-    public Boolean insertUtente(Utente nuovoUtente) {
+    public boolean insertUtente(Utente nuovoUtente) {
         Connection conn = null;
         try {
             conn = DbManager.getInstance().getDbConnection();
 
             String insert = "insert into utenti (idUtente, nome, cognome, email, password, immagine, ente, tipoUtente)"
-                    + "values (default, '" + nuovoUtente.getNome() + "','" 
-                    + nuovoUtente.getCognome() + "','" + nuovoUtente.getEmail() 
-                    + "','" + nuovoUtente.getPassword() + "','" + nuovoUtente.getImmagine() 
+                    + "values (default, '" + nuovoUtente.getNome() + "','"
+                    + nuovoUtente.getCognome() + "','" + nuovoUtente.getEmail()
+                    + "','" + nuovoUtente.getPassword() + "','" + nuovoUtente.getImmagine()
                     + "','" + nuovoUtente.getEnte() + "'," + "true);";
 
             Statement stmt = conn.createStatement();
@@ -217,5 +217,30 @@ public class AutoriFactory {
             }
             return false;
         }
+    }
+
+    public boolean searchUtente(String nomeUtente) {
+        try {
+            Connection conn = DbManager.getInstance().getDbConnection();
+            String sql = "select * from utenti where nome=? and cognome=?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            String[] nomeCognome= nomeUtente.split(" ");
+            
+            stmt.setString(1, nomeCognome[0]);
+            stmt.setString(2, nomeCognome[1]);
+            ResultSet set = stmt.executeQuery();
+
+            if (set.next()) {
+                stmt.close();
+                conn.close();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }
