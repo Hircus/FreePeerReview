@@ -116,27 +116,12 @@ public class ArticoliFactory {
                 }
             }
 
-            /*Prove per la sql injection
-            sql = "insert into articoli (idArticolo, titolo, testo, immagine, dataScrittura, stato, categorie) values (default , ?, ?, ?, ?, ?, ?)";
-            stmt = conn.prepareStatement(sql);
-
-            stmt.setString(1, articolo.getTitolo());
-            stmt.setString(2, articolo.getTesto());
-            stmt.setString(3, articolo.getImmagine());
-            stmt.setString(4, articolo.getData());
-            stmt.setString(5, articolo.getStato());
-            stmt.setString(6, articolo.getCategorie());
-
-            stmt.executeUpdate(sql);*/
             Statement stmtInsert = conn.createStatement();
             sql = "insert into articoli (idArticolo, titolo, testo, immagine, dataScrittura, categorie, stato) values (default , '"
-                    + articolo.getTitolo() + "', '" + articolo.getTesto() + "', '" + articolo.getImmagine() + "', '" + articolo.getData() + "', '" + articolo.getCategorie() + "', 'Aperto');";/**/
+                    + articolo.getTitolo() + "', '" + articolo.getTesto() + "', '" + articolo.getImmagine() + "', '" + articolo.getData() + "', '" + articolo.getCategorie() + "', 'Aperto');";
 
             stmtInsert.executeUpdate(sql);
 
-            /**
-             *
-             */
             sql = "select * from articoli where titolo=?;";
             stmt = conn.prepareStatement(sql);
 
@@ -148,9 +133,6 @@ public class ArticoliFactory {
                 articolo.setId(set.getInt("idArticolo"));
             }
 
-            /**
-             *
-             */
             sql = "insert into autori (idUtente, idArticolo) values(?, ?)";
 
             stmt = conn.prepareStatement(sql);

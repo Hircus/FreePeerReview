@@ -63,7 +63,7 @@ public class WritePaper extends HttpServlet {
         if (request.getParameter("salva") != null) {
             String autore = request.getParameter("autori");
             if (AutoriFactory.getInstance().searchUtente(autore)) {
-                boolean inserimento = false;
+                head = "SCRIVI ARTICOLO";
                 String titolo = request.getParameter("titolo");
                 String foto = request.getParameter("immagine");
                 String date = request.getParameter("data");
@@ -79,11 +79,8 @@ public class WritePaper extends HttpServlet {
                     articolo.setImmagine(foto);
                     articolo.setDataByString(date);
                     articolo.setTesto(testo);
-                    inserimento = ArticoliFactory.getInstance().insertArticolo(articolo, utente);
-
-                    if (inserimento) {
-                        request.getRequestDispatcher("articoli.html").forward(request, response);
-                    }
+                    if(request.getParameter("pid") != null) 
+                   ArticoliFactory.getInstance().insertArticolo(articolo, utente);
                 }
             }
         }

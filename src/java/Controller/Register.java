@@ -36,31 +36,24 @@ public class Register extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        Object id= session.getAttribute("utenteId");
+        Object id = session.getAttribute("utenteId");
         String titolo;
         String button1;
         String button2;
         Utente utente;
-        
+
         if (id == null) {
-            utente= new Utente();
-            
-            titolo="REGISTRAZIONE";
-            button1="REGISTRATI";
-            button2="ESCI";
-            
-            session.setAttribute("button2", button2);
-        }else{
+            utente = new Utente();
+
+            titolo = "REGISTRAZIONE";
+            button1 = "REGISTRATI";
+            button2 = "ESCI";
+        } else {
             utente = (Utente) session.getAttribute("utente");
-            titolo="PROFILO";
-            button1="SALVA";
+            titolo = "PROFILO";
+            button1 = "SALVA";
+            button2 = "CANCELLA IL PROFILO";
         }
-        
-        session.setAttribute("titolo", titolo);
-        session.setAttribute("button1", button1);
-        session.setAttribute("utente", utente);
-        request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
-        
         if (request.getParameter("check") != null) {
 
             String nome = request.getParameter("nome");
@@ -84,6 +77,21 @@ public class Register extends HttpServlet {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
         }
+        if (request.getParameter("logout") != null) {
+            if (id == null) {
+                request.getRequestDispatcher("logout.html").forward(request, response);
+            } else {
+                boolean cancella = AutoriFactory.getInstance().deleteUtente((int) id);
+                if (cancella) {
+                    request.getRequestDispatcher("M1/login.jsp").forward(request, response);
+                }
+            }
+        }
+        session.setAttribute("titolo", titolo);
+        session.setAttribute("button1", button1);
+        session.setAttribute("button2", button2);
+        session.setAttribute("utente", utente);
+        request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

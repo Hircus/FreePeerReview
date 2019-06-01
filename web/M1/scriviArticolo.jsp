@@ -71,10 +71,10 @@
                                     <c:when test="${articolo!=null}">
                                         <c:forEach items="${categorie}" var="i">
                                             <c:if test="${articolo.getCategorie().contains(i)}">
-                                                <input type="checkbox" name="cat" id="${i}" checked>
+                                                <input type="checkbox" name="cat" value="${i}" id="${i}" checked>
                                             </c:if>
                                             <c:if test="${!(articolo.getCategorie().contains(i))}">
-                                                <input type="checkbox" name="cat" id="${i}">
+                                                <input type="checkbox" name="cat" value="${i}" id="${i}">
                                             </c:if>
                                             <label for="${i}"/>${i}
                                         </c:forEach>

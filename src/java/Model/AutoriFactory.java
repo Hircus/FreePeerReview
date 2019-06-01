@@ -43,7 +43,7 @@ public class AutoriFactory {
 
             while (set.next()) {
                 Utente utente = new Utente();
-                utente.setId(set.getInt("id"));
+                utente.setId(set.getInt("idUtente"));
                 utente.setNome(set.getString("nome"));
                 utente.setCognome(set.getString("cognome"));
                 utente.setEmail(set.getString("email"));
@@ -153,15 +153,25 @@ public class AutoriFactory {
             conn = DbManager.getInstance().getDbConnection();
             conn.setAutoCommit(false);
 
-            String articoli = "DELETE FROM articoli WHERE autore = ?";
+            String articoliTable, autoriTable;
+            PreparedStatement stmt, stmt2;
+            List<Articolo> arts = ArticoliFactory.getInstance().getArticoliByAutore(this.getUtentebyID(id));
 
-            PreparedStatement stmt = conn.prepareStatement(articoli);
+            for (Articolo a : arts) {
+                articoliTable = "delete from articoli where idArticolo = ?;";
+                autoriTable = "delete from autori where idArticolo = ?;";
 
-            stmt.setInt(1, id);
+                stmt = conn.prepareStatement(articoliTable);
+                stmt2 = conn.prepareStatement(autoriTable);
+                
+                stmt.setInt(1, a.getId());
+                stmt2.setInt(1, a.getId());
+                
+                stmt.executeUpdate();
+                stmt2.executeUpdate();
+            }
 
-            stmt.executeUpdate();
-
-            String utente = "DELETE FROM utenti WHERE id_utente=?";
+            String utente = "delete from utenti WHERE idUtente=?";
 
             stmt = conn.prepareStatement(utente);
 
@@ -173,6 +183,8 @@ public class AutoriFactory {
             conn.setAutoCommit(true);
             stmt.close();
             conn.close();
+
+            return true;
         } catch (SQLException e) {
             Logger.getLogger(AutoriFactory.class.getName()).log(Level.SEVERE, null, e);
             if (conn != null) {
@@ -184,7 +196,6 @@ public class AutoriFactory {
             }
             return false;
         }
-        return true;
     }
 
     public boolean insertUtente(Utente nuovoUtente) {
@@ -225,9 +236,9 @@ public class AutoriFactory {
             String sql = "select * from utenti where nome=? and cognome=?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
-            
-            String[] nomeCognome= nomeUtente.split(" ");
-            
+
+            String[] nomeCognome = nomeUtente.split(" ");
+
             stmt.setString(1, nomeCognome[0]);
             stmt.setString(2, nomeCognome[1]);
             ResultSet set = stmt.executeQuery();

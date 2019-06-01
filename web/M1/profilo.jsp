@@ -27,7 +27,7 @@
             <c:if test="${utente.getId()!=0}">
                 <jsp:include page="sidebar.jsp"/>
             </c:if>
-            
+
             <c:if test="${utente.getId()==0}">
                 <aside class="col-3"></aside>
                 </c:if>
@@ -70,12 +70,10 @@
                     <button type="submit" class="pageButton">${button1}</button>
                 </form>
 
-                <c:if test="${utente.getId()==0}">
-                    <form action="logout.html" method="post">
-                        <label>Non sei più interessato?</label>
-                        <button type="submit" name="logout" class="pageButton reg">${button2}</button>                    
-                    </form>
-                </c:if>
+                <form action="registrazione.html" method="post">
+                    <label>Non sei più interessato?</label>
+                    <button type="submit" name="logout" class="pageButton reg">${button2}</button>                    
+                </form>
 
             </main>
         </div>

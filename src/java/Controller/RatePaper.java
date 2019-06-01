@@ -41,7 +41,7 @@ public class RatePaper extends HttpServlet {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
 
-            Articolo art = ArticoliFactory.getInstance().getArticoliByAutore(utente).get(2);
+            Articolo art = ArticoliFactory.getInstance().getArticoliByAutore(utente).get(0);
             int maxAut = art.getAutori().size() - 1;
 
             Valutazione val = art.getValutazione();
