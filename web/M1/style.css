@@ -69,8 +69,8 @@ sinistra*/
     }
     /*Style dei form all'interno delle pagine rispettivamente:
     registrazione.html, login.html, profilo.html, articoli.html, scriviArticolo.html*/
-    .login, .profilo, .articoli, .scriviArticolo, .registrazione{
-        width: 50%;
+    .login, .profilo, .scriviArticolo, .registrazione{
+        width: 60%;
     }
 }
 

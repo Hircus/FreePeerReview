@@ -34,40 +34,39 @@
             -->
             <main class="col-9">
                 <h1>I MIEI ARTICOLI</h1>
-
-                <!--Form con la tabella-->
-                <form class="articoli" action="scriviArticolo.html" method="post">
-                    <c:if test="${articoli.size()==0}">
-                        <h1>Non sono presenti articoli</h1>
-                    </c:if>
-                    <c:if test="${articoli.size()!=0}">
-                        <table>
-                            <!--Prima riga-->
-                            <tr>
-                                <th>DATA</th>
-                                <th>TITOLO</th>
-                                <th>STATO</th>
-                                <th>OPZIONI</th>
+                <c:if test="${articoli.size()==0}">
+                    <h1>Non sono presenti articoli</h1>
+                </c:if>
+                <c:if test="${articoli.size()!=0}">
+                    <table style="width: 60%;">
+                        <!--Prima riga-->
+                        <tr>
+                            <th>DATA</th>
+                            <th>TITOLO</th>
+                            <th>STATO</th>
+                            <th>OPZIONI</th>
+                        </tr>
+                        <c:forEach begin="0" end="${maxArtUtente}" var="i">
+                            <tr class="colore1">
+                                <td>${articoli.get(i).getData().toString()}</td>
+                                <td>${articoli.get(i).getTitolo()}</td>    
+                                <td>Aperto</td>
+                                <td>
+                                    <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
+                                        <img class="imgArticle" src="img/pencil.png" 
+                                             title="Modifica" name="modifica" alt="Modifica">  
+                                    </a>
+                                    <a>
+                                        <img class="imgArticle" src="img/trash.png" 
+                                             title="Cancella" alt="Cancella">
+                                    </a>
+                                </td>
                             </tr>
-                            <c:forEach begin="0" end="${maxArtUtente}" var="i">
-                                <tr class="colore1">
-                                    <td>${articoli.get(i).getData().toString()}</td>
-                                    <td>${articoli.get(i).getTitolo()}</td>    
-                                    <td>Aperto</td>
-                                    <td>
-                                        <a href="scriviArticolo.html?pid=${articoli.get(i).getId()}">
-                                            <img class="imgArticle" src="img/pencil.png" 
-                                                 title="Modifica" name="modifica" alt="Modifica">  
-                                        </a>
-                                        <a>
-                                            <img class="imgArticle" src="img/trash.png" 
-                                                 title="Cancella" alt="Cancella">
-                                        </a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </c:if>
+                        </c:forEach>
+                    </table>
+                </c:if>
+                <!--Form con la tabella-->
+                <form action="scriviArticolo.html" method="post">
                     <!--Submit per scrivere un nuovo articolo-->
                     <button type="submit" name="scriviArticolo" class="pageButton">SCRIVI UN ARTICOLO</button>
                 </form>
