@@ -63,7 +63,7 @@
 
                         <!--Immagine descrittiva dell'argomento-->
                         <br/>
-                        <img src="img/article.jpeg" title="fotoarticolo" alt="Immagine illustrativa">
+                        <img src="img/article.png" title="fotoarticolo" alt="Immagine illustrativa" height="300" width="500">
 
                         <!--Categorie descrittive dell'articolo in questione-->
                         <h2>Categorie:</h2>
