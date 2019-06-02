@@ -28,6 +28,10 @@
         <servlet-name>RatePaper</servlet-name>
         <servlet-class>Controller.RatePaper</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePaper</servlet-name>
+        <servlet-class>Controller.DeletePaper</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login.html</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>RatePaper</servlet-name>
         <url-pattern>/valutazione.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePaper</servlet-name>
+        <url-pattern>/eliminaArticolo.html</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

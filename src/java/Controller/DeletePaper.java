@@ -6,18 +6,16 @@
 package Controller;
 
 import Model.*;
-import java.util.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 /**
  *
- * @author antonio
+ * @author tobias
  */
-//@WebServlet(name = "Articoli", urlPatterns = {"/articoli.html"})
-public class MyPapers extends HttpServlet {
+public class DeletePaper extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,35 +31,22 @@ public class MyPapers extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-
-        if (session.getAttribute("utenteId") != null) {
-            Utente utente = (Utente) session.getAttribute("utente");
-            //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-            
-            if (utente.getTipo() == false) {
-                List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
-                int maxArt = tuttiArticoli.size() - 1;
-
-                session.setAttribute("maxArt", maxArt);
-                session.setAttribute("all", tuttiArticoli);
-
-                request.getRequestDispatcher("M1/gestioneArticoli.jsp").forward(request, response);
-            }
-            //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-
-            List<Articolo> articoli = ArticoliFactory.getInstance()
-                    .getArticoliByAutore(utente);
-            int maxArtUtente = articoli.size() - 1;
-
-            session.setAttribute("maxArtUtente", maxArtUtente);
-            session.setAttribute("articoli", articoli);
-
-            request.getRequestDispatcher("M1/articoli.jsp").forward(request, response);
-            //carica una jsp
-        } else { //sennò l'utente non è autenticato
-            request.getRequestDispatcher("logout.html").forward(request, response);
-
+        Utente utente = (Utente) session.getAttribute("utente");
+        if (utente.getTipo() == false) {
+            request.getRequestDispatcher("M1/error.jsp").forward(request, response);
         }
+        if (session.getAttribute("utenteId") == null) {
+            request.getRequestDispatcher("login.html").forward(request, response);
+        } else {
+            if (request.getParameter("pid") != null) {
+                int pid = Integer.parseInt(request.getParameter("pid"));
+                if (pid != 0) {
+                    ArticoliFactory.getInstance().deleteArticolo(pid);
+                }
+            }
+            request.getRequestDispatcher("M1/articoli.jsp").forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

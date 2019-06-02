@@ -40,7 +40,7 @@
                 <form class="profilo" action="registrazione.html" method="post">
                     <div>
                         <label for="id_nome">Nome: </label>
-                        <input type="text" name="nomeUtente" id="id_nome" value=${utente.getNome()}> 
+                        <input type="text" name="nome" id="id_nome" value=${utente.getNome()}> 
                     </div>
 
                     <div>
@@ -50,7 +50,7 @@
 
                     <div>
                         <label for="id_mail">E-mail: </label>
-                        <input type="text" name="mail" id="id_mail" value=${utente.getEmail()}>
+                        <input type="text" name="email" id="id_mail" value=${utente.getEmail()}>
                     </div>
 
                     <div>
@@ -67,7 +67,18 @@
                         <label for="id_ente">Ente: </label>
                         <input type="text" name="ente" id="id_ente" value=${utente.getEnte()}>
                     </div>
-                    <button type="submit" class="pageButton">${button1}</button>
+
+                    <c:if test="${utente.getId()==0}">
+                        <div>
+                            <input type="checkbox" name="tipo" id="tipo" value="true">
+                            <label for="tipo">Autore</label>
+
+                            <input type="checkbox" name="tipo" id="tipo" value="false">
+                            <label for="tipo">Organizzatore</label>
+                        </div>
+                    </c:if>
+
+                    <button type="submit" name="check" class="pageButton">${button1}</button>
                 </form>
 
                 <form action="registrazione.html" method="post">

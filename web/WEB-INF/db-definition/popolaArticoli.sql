@@ -9,13 +9,13 @@
  */
 
 insert into articoli (idArticolo, titolo, testo, immagine, dataScrittura, stato, categorie) 
-    values(default, 'Il linguaggio Python', 'Python è un ottimo linguaggio di scripting', 'python.png', '28/05/2019', 'Aperto', 'Python');
+    values(default, 'Come usare il BR', 'Il BR non va mai usato troppo, come tre di fila', 'site.png', '28/05/2019', 'Aperto', 'HTML');
 
 insert into articoli (idArticolo, titolo, testo, immagine, dataScrittura, stato, categorie) 
-    values(default, 'Machine Learning con R', 'Una combinazione dei linguaggi R e Python permette un ottimo machine learning', 'r.png', '18/06/2014', 'Accettato', 'R,Python');
+    values(default, 'Box Model', 'Il Box Model è la struttura base per qualsiasi sito', 'box.png', '18/06/2014', 'Valutazione', 'CSS');
 
 insert into articoli (idArticolo, titolo, testo, immagine, dataScrittura, stato, categorie) 
-    values(default, 'Il DOM', 'Implementato con Javascript, il dom permette di creare un sito web dinamico', 'web.png', '14/12/2016', 'Rifiutato', 'Js');
+    values(default, 'AJAX per filtri', 'AJAX è una tecnica di sviluppo software per la realizzazione di applicazioni web interattive', 'web.png', '14/12/2016', 'Accettato', 'AJAX');
 
 insert into articoli (idArticolo, titolo, testo, immagine, dataScrittura, stato, categorie) 
-    values(default, 'Gestione thread in Linux', 'Il C premette di gestire i thread attraverso un buffer', 'spaceinvaders.png', '09/02/2018', 'Valutazione', 'C');
+    values(default, 'Le Servlet', 'Le servlet sono delle classi Java che hanno lo scopo di reindizzare dei dati alle pagine web', 'java.png', '09/02/2018', 'Rifiutato', 'Servlet');

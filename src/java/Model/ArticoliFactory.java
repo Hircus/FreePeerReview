@@ -147,10 +147,83 @@ public class ArticoliFactory {
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
+    }
 
-        return false;
+    public boolean updateArticolo(Articolo articolo) {
 
+        try {
+            Connection conn = DbManager.getInstance().getDbConnection();
+            PreparedStatement stmt1;
+            Statement stmt2 = conn.createStatement();
+            String sql1, sql2;
+
+            sql1 = "select * from articoli where titolo=?;";
+            stmt1 = conn.prepareStatement(sql1);
+
+            stmt1.setString(1, articolo.getTitolo());
+
+            ResultSet set = stmt1.executeQuery();
+
+            while (set.next()) {
+                articolo.setId(set.getInt("idArticolo"));
+            }
+
+            sql2 = "update articoli set titolo = '" + articolo.getTitolo() + "', testo = '" + articolo.getTesto()
+                    + "', immagine = '" + articolo.getImmagine() + "', dataScrittura = '" + articolo.getData() + "', categorie = '" + articolo.getCategorie()
+                    + "' where idArticolo = " + articolo.getId() + ";";
+            stmt2.executeUpdate(sql2);
+
+            stmt1.close();
+            stmt2.close();
+            conn.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean deleteArticolo(int id) {
+        Connection conn = null;
+        try {
+            conn = DbManager.getInstance().getDbConnection();
+            conn.setAutoCommit(false);
+
+            String articoliTable, autoriTable;
+            PreparedStatement stmt, stmt2;
+
+            articoliTable = "delete from articoli where idArticolo = ?;";
+            autoriTable = "delete from autori where idArticolo = ?;";
+
+            stmt = conn.prepareStatement(articoliTable);
+            stmt2 = conn.prepareStatement(autoriTable);
+
+            stmt.setInt(1, id);
+            stmt2.setInt(1, id);
+
+            stmt.executeUpdate();
+            stmt2.executeUpdate();
+            
+            conn.commit();
+            conn.setAutoCommit(true);
+            stmt.close();
+            stmt2.close();
+            conn.close();
+
+            return true;
+        } catch (SQLException e) {
+            Logger.getLogger(AutoriFactory.class.getName()).log(Level.SEVERE, null, e);
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AutoriFactory.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            return false;
+        }
     }
 
     public Articolo getArticoloId(int id) {

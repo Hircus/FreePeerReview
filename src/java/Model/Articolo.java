@@ -14,8 +14,8 @@ import java.util.*;
 public class Articolo {
 
     private int id;
-    private List<Utente> autori;
-    private String categorie="";
+    private List<Utente> autori = new ArrayList<>();
+    private String categorie = "";
     private String titolo;
     private String testo;
     private String immagine;
@@ -52,7 +52,9 @@ public class Articolo {
     }
 
     public void addCategoria(String nuovaCategoria) {
-        if(!(categorie.equals(""))) categorie += ",";
+        if (!(categorie.equals(""))) {
+            categorie += ",";
+        }
         categorie += nuovaCategoria;
     }
 

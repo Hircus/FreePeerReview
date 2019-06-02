@@ -33,64 +33,99 @@ public class WritePaper extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-
         Utente utente = (Utente) session.getAttribute("utente");
         List<String> categorie = CategorieFactory.getInstance().getCategorie();
-        String head = null, title = null, immagine = null, data = null, testo = null;
+        String head = null, titolo, foto, data, testo;
         Articolo articolo = null;
 
         if (utente.getTipo() == false) {
             request.getRequestDispatcher("M1/error.jsp").forward(request, response);
         }
-
-        if (request.getParameter("scriviArticolo") != null) {
-            List<Articolo> articoli = null;
-
-            head = "SCRIVI ARTICOLO";
-        }
-        if (request.getParameter("pid") != null) {
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            articolo = ArticoliFactory.getInstance().getArticoloId(pid);
-            request.setAttribute("articolo", articolo);
-
-            head = "MODIFICA ARTICOLO";
-            title = articolo.getTitolo();
-            immagine = articolo.getImmagine();
-            data = articolo.getData();
-            testo = articolo.getTesto();
-        }
-
-        if (request.getParameter("salva") != null) {
-            String autore = request.getParameter("autori");
-            if (AutoriFactory.getInstance().searchUtente(autore)) {
-                head = "SCRIVI ARTICOLO";
-                String titolo = request.getParameter("titolo");
-                String foto = request.getParameter("immagine");
-                String date = request.getParameter("data");
-                String text = request.getParameter("testo");
-                String[] cat = request.getParameterValues("cat");
-                articolo = new Articolo();
-                if (titolo != null && autore != null && foto != null && date != null && text != null) {
-
-                    for (int i = 0; i < cat.length; i++) {
-                        articolo.addCategoria(cat[i]);
+        if (session.getAttribute("utenteId") == null) {
+            request.getRequestDispatcher("login.html").forward(request, response);
+        } else {
+            if (request.getParameter("pid") != null) {
+                int pid = Integer.parseInt(request.getParameter("pid"));
+                if (pid != 0) {
+                    articolo = ArticoliFactory.getInstance().getArticoloId(pid);
+                    head = "MODIFICA ARTICOLO";
+                    if (request.getParameter("salva") != null) {
+                        titolo = request.getParameter("titolo");
+                        foto = request.getParameter("immagine");
+                        data = request.getParameter("data");
+                        testo = request.getParameter("testo");
+                        String[] cat = request.getParameterValues("cat");
+                        String autore = request.getParameter("autori");
+                        if (AutoriFactory.getInstance().searchUtente(autore)) {
+                            if (titolo != null && autore != null && foto != null
+                                    && data != null && testo != null) {
+                                for (int i = 0; i < cat.length; i++) {
+                                    if (!articolo.getCategorie().contains(cat[i])) {
+                                        articolo.addCategoria(cat[i]);
+                                    }
+                                }
+                                articolo.setTitolo(titolo);
+                                articolo.setImmagine(foto);
+                                articolo.setDataByString(data);
+                                articolo.setTesto(testo);
+                            }
+                        }
+                        ArticoliFactory.getInstance().updateArticolo(articolo);
                     }
-                    articolo.setTitolo(titolo);
-                    articolo.setImmagine(foto);
-                    articolo.setDataByString(date);
-                    articolo.setTesto(testo);
-                    if(request.getParameter("pid") != null) 
-                   ArticoliFactory.getInstance().insertArticolo(articolo, utente);
+                } else {
+                    articolo = new Articolo();
+                    head = "SCRIVI ARTICOLO";
+                    if (request.getParameter("salva") != null) {
+                        titolo = request.getParameter("titolo");
+                        foto = request.getParameter("immagine");
+                        data = request.getParameter("data");
+                        testo = request.getParameter("testo");
+                        String[] cat = request.getParameterValues("cat");
+                        String autore = request.getParameter("autori");
+                        if (AutoriFactory.getInstance().searchUtente(autore)) {
+                            if (titolo != null && autore != null && foto != null
+                                    && data != null && testo != null) {
+                                for (int i = 0; i < cat.length; i++) {
+                                    articolo.addCategoria(cat[i]);
+                                }
+                                articolo.setTitolo(titolo);
+                                articolo.setImmagine(foto);
+                                articolo.setDataByString(data);
+                                articolo.setTesto(testo);
+                            }
+                        }
+                    }
+                    ArticoliFactory.getInstance().insertArticolo(articolo, utente);
                 }
+            } else {
+                articolo = new Articolo();
+                head = "SCRIVI ARTICOLO";
+                if (request.getParameter("salva") != null) {
+                    titolo = request.getParameter("titolo");
+                    foto = request.getParameter("immagine");
+                    data = request.getParameter("data");
+                    testo = request.getParameter("testo");
+                    String[] cat = request.getParameterValues("cat");
+                    String autore = request.getParameter("autori");
+                    if (AutoriFactory.getInstance().searchUtente(autore)) {
+                        if (titolo != null && autore != null && foto != null
+                                && data != null && testo != null) {
+                            for (int i = 0; i < cat.length; i++) {
+                                articolo.addCategoria(cat[i]);
+                            }
+                            articolo.setTitolo(titolo);
+                            articolo.setImmagine(foto);
+                            articolo.setDataByString(data);
+                            articolo.setTesto(testo);
+                        }
+                    }
+                }
+                ArticoliFactory.getInstance().insertArticolo(articolo, utente);
             }
         }
-
+        request.setAttribute("articolo", articolo);
         request.setAttribute("categorie", categorie);
         request.setAttribute("head", head);
-        request.setAttribute("title", title);
-        request.setAttribute("immagine", immagine);
-        request.setAttribute("data", data);
-        request.setAttribute("testo", testo);
 
         request.getRequestDispatcher("M1/scriviArticolo.jsp").forward(request, response);
 

@@ -52,21 +52,6 @@ public class Login extends HttpServlet {
         //qui l'utente ha loggato sicuramente e autoreID è inizializzato
         if (session.getAttribute("utenteId") != null) {
             Utente utente = (Utente)session.getAttribute("utente");
-            
-            if (utente.getTipo() == false) {
-                List<Articolo> tuttiArticoli = ArticoliFactory.getInstance().getArticoli();
-                int maxArt = tuttiArticoli.size() - 1;
-
-                session.setAttribute("maxArt", maxArt);
-                session.setAttribute("all", tuttiArticoli);
-
-                request.getRequestDispatcher("M1/gestioneArticoli.jsp").forward(request, response);
-            }
-            //passo alla jsp una variabile di nome autore, con un id riferito all'oggetto
-
-            List<Articolo> articoli = ArticoliFactory.getInstance()
-                    .getArticoliByAutore(utente);
-            session.setAttribute("articoli", articoli);
             //carica una jsp
             request.getRequestDispatcher("articoli.html").forward(request, response);
         } else { //sennò l'utente non è autenticato

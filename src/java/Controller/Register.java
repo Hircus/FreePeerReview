@@ -71,10 +71,15 @@ public class Register extends HttpServlet {
             nuovoUtente.setPassword(password);
             nuovoUtente.setEnte(ente);
 
-            if (AutoriFactory.getInstance().insertUtente(nuovoUtente)) {
+            if (id == null) {
+                String[] tipo = request.getParameterValues("tipo");
+                nuovoUtente.setTipo(Boolean.parseBoolean(tipo[0]));
+                AutoriFactory.getInstance().insertUtente(nuovoUtente);
                 request.getRequestDispatcher("M1/login.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("M1/error.jsp").forward(request, response);
+                nuovoUtente.setTipo(utente.getTipo());
+                AutoriFactory.getInstance().updateUtente(nuovoUtente);
+                request.getRequestDispatcher("M1/profilo.jsp").forward(request, response);
             }
         }
         if (request.getParameter("logout") != null) {

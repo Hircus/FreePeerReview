@@ -56,7 +56,7 @@
                                         <img class="imgArticle" src="img/pencil.png" 
                                              title="Modifica" name="modifica" alt="Modifica">  
                                     </a>
-                                    <a>
+                                    <a href="eliminaArticolo.html?pid=${articoli.get(i).getId()}">
                                         <img class="imgArticle" src="img/trash.png" 
                                              title="Cancella" alt="Cancella">
                                     </a>

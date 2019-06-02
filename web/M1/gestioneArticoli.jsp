@@ -37,25 +37,31 @@
 
                 <!--Form con la tabella-->
                 <form class="articoli" action="logout.html" method="post">
-                    <table>
-                        <!--Prima riga-->
-                        <tr>
-                            <th>DATA</th>
-                            <th>TITOLO</th>
-                            <th>N. VALUTAZIONI</th>
-                            <th>DECISIONE</th>
-                        </tr>
+                    <c:choose>
+                        <c:when test="${all.size()!=0}">
+                            <table>
+                                <!--Prima riga-->
+                                <tr>
+                                    <th>DATA</th>
+                                    <th>TITOLO</th>
+                                    <th>N. VALUTAZIONI</th>
+                                    <th>DECISIONE</th>
+                                </tr>
+                                <c:forEach begin="0" end="${maxArt}" var="i">
+                                    <tr class="colore1">
+                                        <td>${all.get(i).getData().toString()}</td>
+                                        <td>${all.get(i).getTitolo()}</td>    
+                                        <td>WIP</td>
+                                        <td>WIP</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:when>
+                        <c:when test="${all.size()==0}">
+                            <h2>Non ci sono articoli</h2>
+                        </c:when>
+                    </c:choose>
 
-                        <c:forEach begin="0" end="${maxArt}" var="i">
-                            <tr class="colore1">
-                                <td>${all.get(i).getData().toString()}</td>
-                                <td>${all.get(i).getTitolo()}</td>    
-                                <td>WIP</td>
-                                <td>WIP</td>
-                            </tr>
-                        </c:forEach>
-
-                    </table>
 
                     <!--Submit per scrivere un nuovo articolo-->
                     <button type="submit" name="logout" class="pageButton">ESCI</button>

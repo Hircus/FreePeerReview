@@ -44,20 +44,20 @@
                         <!--Titolo-->
                         <div>
                             <label>Titolo:</label>
-                            <input type="text" title="titolo" name="titolo" value="${title}">
+                            <input type="text" title="titolo" name="titolo" value="${articolo.getTitolo()}">
                         </div>
 
                         <!--Autori-->
                         <div class="row">
                             <label>Autori:</label>
                             <c:choose>
-                                <c:when test="${articolo!=null}">
+                                <c:when test="${articolo.getAutori().size()!=0}">
                                     <c:forEach begin="0" end="${articolo.getAutori().size()-1}" var="i">
                                         <input class="autori" type="text" title="autori" name="autori"
                                                value="${articolo.getAutori().get(i).getNome()} ${articolo.getAutori().get(i).getCognome()}">
                                     </c:forEach>
                                 </c:when>
-                                <c:when test="${articolo==null}">
+                                <c:when test="${articolo.getAutori().size()==0}">
                                     <input class="autori" type="text" title="autori" name="autori">
                                 </c:when>
                             </c:choose>
@@ -92,19 +92,19 @@
                         <!--Immagine-->
                         <div>
                             <label>Immagine:</label>
-                            <input type="text" title="immagine" name="immagine" value="${immagine}">
+                            <input type="text" title="immagine" name="immagine" value="${articolo.getImmagine()}">
                         </div>
 
                         <!--Data-->
                         <div>
                             <label>Data:</label>
-                            <input type="text" name="data" value="${data}">
+                            <input type="text" name="data" value="${articolo.getData()}">
                         </div>
 
                         <!--Testo dell'articolo-->
                         <div>
                             <label>Testo:</label>
-                            <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${testo}</textarea>
+                            <textarea maxlength="300" rows="7" cols="60" name="testo" id="testo">${articolo.getTesto()}</textarea>
                         </div>
 
                         <!--Premere per proseguire-->

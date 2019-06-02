@@ -26,13 +26,12 @@ create table articoli(
     immagine varchar(100),
     dataScrittura varchar(100),
     stato enum ('Aperto', 'Accettato', 'Rifiutato', 'Valutazione'),
-    categorie set ('Python', 'C', 'Java', 'Js', 'R', 'C++')
+    categorie set ('HTML', 'CSS', 'Servlet', 'JSP', 'JavaScript', 'AJAX')
 );
 
 create table categorie(
     idCategoria serial primary key,
-    nome varchar(100),
-    selezionata boolean
+    nome varchar(100)
 );
 
 create table autori(
