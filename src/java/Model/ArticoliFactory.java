@@ -174,6 +174,11 @@ public class ArticoliFactory {
                     + "', immagine = '" + articolo.getImmagine() + "', dataScrittura = '" + articolo.getData() + "', categorie = '" + articolo.getCategorie()
                     + "' where idArticolo = " + articolo.getId() + ";";
             stmt2.executeUpdate(sql2);
+            
+            for(Utente u: articolo.getAutori()){
+                sql2= "update autori set idUtente = '"+ u.getId()+ "' where idArticolo = " + articolo.getId() + ";";
+                stmt2.executeUpdate(sql2);
+            }
 
             stmt1.close();
             stmt2.close();

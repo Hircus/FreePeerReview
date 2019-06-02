@@ -6,12 +6,10 @@
 package Controller;
 
 import Model.*;
+import java.util.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 /**
  *
@@ -34,22 +32,36 @@ public class RatePaper extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("utenteId") != null) {
-
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente.getTipo() == false) {
                 request.getRequestDispatcher("M1/error.jsp").forward(request, response);
             }
+            Articolo valArticolo = null;
+            List<Articolo> all = ArticoliFactory.getInstance().getArticoli();
+            List<Articolo> articoli = ArticoliFactory.getInstance().getArticoliByAutore(utente);
+            List<Articolo> valArticoli = new ArrayList<>();
 
-            Articolo art = ArticoliFactory.getInstance().getArticoliByAutore(utente).get(0);
-            int maxAut = art.getAutori().size() - 1;
+            for (Articolo a : all) {
+                boolean flag = true;
+                for (Articolo b : articoli) {
+                    if (a.getTitolo().equals(b.getTitolo())) {
+                        flag = false;
+                    }
+                }
+                if(flag) valArticoli.add(a);
+            }
 
-            Valutazione val = art.getValutazione();
+            request.setAttribute("valArticoli", valArticoli);
+            request.setAttribute("articoli", articoli);
 
-            request.setAttribute("val", val);
-            request.setAttribute("art", art);
-            request.setAttribute("maxAut", maxAut);
-
+            if (request.getParameter("pid") != null) {
+                int pid = Integer.parseInt(request.getParameter("pid"));
+                if (pid != 0) {
+                    valArticolo = ArticoliFactory.getInstance().getArticoloId(pid);
+                    request.setAttribute("valArticolo", valArticolo);
+                }
+            }
             request.getRequestDispatcher("M1/valutazione.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("M1/login.jsp").forward(request, response);

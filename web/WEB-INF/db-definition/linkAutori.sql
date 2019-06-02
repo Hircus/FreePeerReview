@@ -9,6 +9,6 @@
  */
 
 insert into autori (idUtente, idArticolo) values (1, 1);
+insert into autori (idUtente, idArticolo) values (1, 3);
 insert into autori (idUtente, idArticolo) values (2, 2);
-insert into autori (idUtente, idArticolo) values (5, 3);
 insert into autori (idUtente, idArticolo) values (4, 4);

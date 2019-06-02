@@ -38,7 +38,7 @@
                     <h1>Non sono presenti articoli</h1>
                 </c:if>
                 <c:if test="${articoli.size()!=0}">
-                    <table style="width: 60%;">
+                    <table style="width: 60%">
                         <!--Prima riga-->
                         <tr>
                             <th>DATA</th>
