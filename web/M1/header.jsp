@@ -7,7 +7,7 @@
         -->
         <header class="col-12">
             <div id="titolo">
-                <img title="Main Image" alt="imgUnica" src="img/homepage.jpg"> 
+                <img title="Main Image" alt="imgUnica" src="img/homepage.png"> 
                 <div id="title">Free Peer revieW</div>
             </div>
             <br/>
